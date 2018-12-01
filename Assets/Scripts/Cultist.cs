@@ -7,14 +7,18 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
 	[SerializeField] private float vel;
-	
+	[SerializeField] private TextMesh _text;
 
-	// Use this for initialization
+	private string letters = "abcdefghijklmnopqrstuvwyz";
+	private bool flag = true;
+	private char[] result;
+	
+	
+	
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
 		if (Satan.active)
@@ -43,6 +47,32 @@ public class Cultist : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 	}
-	
-	
+
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("piglet"))
+		{
+			if (Satan.active && flag)
+				purge();
+		}
+	}
+
+	void purge()
+	{
+//		for (int i = 0; i < 5;i++)
+//		{
+			//_text.text += " " + Rand();
+		
+				
+			//result[i] = letters[Random.Range(0, letters.Length - 1)];
+			//Debug.Log(Rand());
+		//}
+		//Destroy(gameObject);
+		flag = false;
+	}
+
+	char Rand()
+	{
+		return letters[Random.Range(0, letters.Length)];
+	}
 }

@@ -6,9 +6,7 @@ public class Piglet : MonoBehaviour
 {
     [SerializeField] private float vel = 3;
 
-    private string letters = "abcdefghijklmnopqrstuvwyz";
-
-    private char result [5];
+    
     //[SerializeField] private float angular = 30;
 
     void Start()
@@ -26,12 +24,6 @@ public class Piglet : MonoBehaviour
             //gameObject.GetComponent<Rigidbody2D>().angularVelocity = angular;
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
         }
-
-        if (collision.gameObject.CompareTag("cultist"))
-        {
-            if (Satan.active)
-                purge();
-        }
     }
 
 //    private void OnCollisionExit2D(Collision2D collision)
@@ -43,17 +35,12 @@ public class Piglet : MonoBehaviour
     {
         if (Satan.active)
             vel = 10;
-
         else
             vel = 3;
     }
 
-    void purge()
+    public void die()
     {
-        for (int i = 0; i < 5 i++)
-        {
-            
-        }
         Destroy(gameObject);
     }
 }
