@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bd0c093a19a40708310a4d2630f2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SatanLaugh: {fileID: 0}
+  SatanLaugh: {fileID: 8300000, guid: 82e6d21baf4974eff9b25e942e15701a, type: 3}
   source: {fileID: 0}
 --- !u!23 &1510102242
 MeshRenderer:
@@ -1634,8 +1634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a44f9979fe1341a18762530de2452c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _satan: {fileID: 0}
-  _noSatan: {fileID: 0}
+  _satan: {fileID: 8300000, guid: 1134f6d280fbd45baa460d11f5b344cf, type: 3}
+  _noSatan: {fileID: 8300000, guid: 84af90300bf844e4598e3f88e78ff4d6, type: 3}
 --- !u!1 &1594748167
 GameObject:
   m_ObjectHideFlags: 0
