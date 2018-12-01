@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.WSA;
 
 public class Cultist : MonoBehaviour {
-
+    
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
 	
@@ -30,14 +30,37 @@ public class Cultist : MonoBehaviour {
 	private bool flag = true;
 	private bool sound_flag = false;
 
+<<<<<<< HEAD
+=======
+    private Rigidbody _rigidbody;
+
+	[SerializeField]
+	private bool _isBeast = false;
+	public bool IsBeast
+	{
+		get { return _isBeast; }
+		set
+		{
+			_isBeast = value;
+			if (value)
+			{
+				_currKey = 0;
+			}
+		}
+	}
+>>>>>>> 61b05bb8905c1e7d8a27d9282a1fcba2eb58754f
 	
 	void Start () {
 		//sprite
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+<<<<<<< HEAD
 		
 		//obtain music components
 		source = gameObject.GetComponent<AudioSource>();
 		source.clip = SatanLaugh;
+=======
+        _rigidbody = GetComponent<Rigidbody>();
+>>>>>>> 61b05bb8905c1e7d8a27d9282a1fcba2eb58754f
 	}
 	
 	void Update ()
@@ -86,6 +109,7 @@ public class Cultist : MonoBehaviour {
 			gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
 
+<<<<<<< HEAD
 		if (Input.GetKey(KeyCode.W))
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, vel);
 		if (Input.GetKeyUp(KeyCode.W))
@@ -105,6 +129,27 @@ public class Cultist : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 		if (Input.GetKeyUp(KeyCode.A))
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+=======
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0,vel);
+		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		
+		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+		if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+		 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+			_rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+			_rigidbody.velocity = new Vector3(0, 0,_rigidbody.velocity.z);
+		
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+			_rigidbody.velocity = new Vector3(-vel,0, _rigidbody.velocity.z);
+		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+			_rigidbody.velocity = new Vector3(0,0, _rigidbody.velocity.z);
+>>>>>>> 61b05bb8905c1e7d8a27d9282a1fcba2eb58754f
 	}
 	
 	public bool IsBeast
@@ -121,7 +166,7 @@ public class Cultist : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("piglet"))
 		{
