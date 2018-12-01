@@ -37,6 +37,13 @@ public class Cultist : MonoBehaviour {
 	
 	void Update ()
 	{
+		if (!Satan.active)
+		{
+			_text.text = "";
+			flag = true;
+			_currKey = 0;
+		}
+		
 		if (Satan.active)
 		{
 			gameObject.GetComponent<SpriteRenderer>().sprite = cultist;

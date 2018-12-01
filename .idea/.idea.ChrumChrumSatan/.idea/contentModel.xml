@@ -9,6 +9,7 @@
         <e p="Scripts" t="Include">
           <e p="Cultist.cs" t="Include" />
           <e p="MarkerBounce.cs" t="Include" />
+          <e p="MusicManager.cs" t="Include" />
           <e p="Piglet.cs" t="Include" />
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />

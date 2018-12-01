@@ -81,7 +81,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819818421153472}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -146,6 +146,8 @@ MonoBehaviour:
   piglet: {fileID: 21300000, guid: 003e0fe7575de406ea6367855f3cd23f, type: 3}
   cultist: {fileID: 21300000, guid: 7ee2a8867c9a04dc69b59d78a3830723, type: 3}
   vel: 4
+  _text: {fileID: 0}
+  _isBeast: 0
 --- !u!212 &212542879225873464
 SpriteRenderer:
   m_ObjectHideFlags: 1
