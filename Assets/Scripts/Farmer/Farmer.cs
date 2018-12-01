@@ -28,10 +28,8 @@ public class Farmer : MonoBehaviour {
 
     void Update()
     {
-        //Debug.Log("TP: " + transform.position + ", CT: " + _currentTarget);
        if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
        {
-            Debug.Log("huj");
             _currentTarget = RandomDest();
             _agent.SetDestination(_currentTarget);
        }
