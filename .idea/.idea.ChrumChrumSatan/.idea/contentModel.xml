@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_ChrumChrumSatan.-1746083097.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_ChrumChrumSatan.1491313362.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -45,10 +45,7 @@
             <e p="FieldGenerator.cs" t="Include" />
           </e>
           <e p="Piglet.cs" t="Include" />
-<<<<<<< HEAD
           <e p="PigletView.cs" t="Include" />
-=======
->>>>>>> 1ce1327f6674c105d957cb51e5523ee630adae3b
           <e p="PowerUps" t="Include">
             <e p="Matches.cs" t="Include" />
             <e p="Poison.cs" t="Include" />
@@ -57,15 +54,6 @@
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />
           <e p="mainMenu" t="Include">
-<<<<<<< HEAD
-            <e p="Pathfinding" t="Include">
-              <e p="Direction.cs" t="Include" />
-              <e p="Field.cs" t="Include" />
-              <e p="FieldGenerator.cs" t="Include" />
-            </e>
-            <e p="camera.cs" t="Include" />
-=======
->>>>>>> 1ce1327f6674c105d957cb51e5523ee630adae3b
             <e p="menuScript.cs" t="Include" />
             <e p="menuSettings.cs" t="Include" />
           </e>

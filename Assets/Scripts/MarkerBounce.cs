@@ -12,7 +12,7 @@ public class MarkerBounce : MonoBehaviour
 	
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Cultist 1");
+		player = GameObject.Find("Cultist");
 		init = transform.position.z - player.transform.position.z;
 
 	}
