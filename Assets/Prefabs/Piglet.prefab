@@ -9,20 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1438105199299078}
+  m_RootGameObject: {fileID: 1764152150799192}
   m_IsPrefabAsset: 1
---- !u!1 &1438105199299078
+--- !u!1 &1764152150799192
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4879145952324486}
-  - component: {fileID: 212628615564552104}
-  - component: {fileID: 114630820425462236}
-  - component: {fileID: 54350045250051666}
-  - component: {fileID: 135281049611145970}
+  - component: {fileID: 4798038271480106}
+  - component: {fileID: 212873761415709588}
+  - component: {fileID: 114171434874067680}
+  - component: {fileID: 54427225239217380}
+  - component: {fileID: 135164111084550102}
+  - component: {fileID: 95243113667178490}
   m_Layer: 0
   m_Name: Piglet
   m_TagString: piglet
@@ -30,25 +31,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4879145952324486
+--- !u!4 &4798038271480106
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438105199299078}
+  m_GameObject: {fileID: 1764152150799192}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3.09, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!54 &54350045250051666
+--- !u!54 &54427225239217380
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438105199299078}
+  m_GameObject: {fileID: 1764152150799192}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -58,36 +59,55 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &114630820425462236
+--- !u!95 &95243113667178490
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764152150799192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7191717909d149439c30fdfbbd65cfb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114171434874067680
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438105199299078}
+  m_GameObject: {fileID: 1764152150799192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66561239e8836437d9f3c0a0cfd105ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vel: 3
---- !u!135 &135281049611145970
+  animator: {fileID: 95243113667178490}
+--- !u!135 &135164111084550102
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438105199299078}
+  m_GameObject: {fileID: 1764152150799192}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.16000004
   m_Center: {x: 0, y: 0, z: 0}
---- !u!212 &212628615564552104
+--- !u!212 &212873761415709588
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438105199299078}
+  m_GameObject: {fileID: 1764152150799192}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -117,7 +137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 003e0fe7575de406ea6367855f3cd23f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f44f2a715a63b76458e265db05d2d814, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

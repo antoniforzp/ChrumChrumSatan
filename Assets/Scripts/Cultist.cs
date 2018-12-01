@@ -2,24 +2,37 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class Cultist : MonoBehaviour {
     
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
+	
+	[SerializeField] private bool _isBeast = false;
 	[SerializeField] private float vel;
+	
 	[SerializeField] private TextMeshProUGUI _text;
+	
+	[SerializeField] private AudioClip SatanLaugh;
+	
+	[SerializeField] private AudioSource source;
+	
+	public static bool active = false;
 
-	private string letters = "abcdefghijklmnopqrstuvwyz";
-	private bool flag = true;
+	// left side of keyboard
+	private string letters = "wasdqertfzxcvb";
+
 	private KeyCode[] _keys = new KeyCode[5];
 	private int _currKey;
 	private Piglet _touchedPiglet;
+	
+	private bool flag = true;
+	private bool sound_flag = false;
+
 
     private Rigidbody _rigidbody;
-
-	[SerializeField]
-	private bool _isBeast = false;
+    
 	public bool IsBeast
 	{
 		get { return _isBeast; }
@@ -32,20 +45,42 @@ public class Cultist : MonoBehaviour {
 			}
 		}
 	}
+
 	
 	void Start () {
+		//sprite
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+
+		source = gameObject.GetComponent<AudioSource>();
+		source.clip = SatanLaugh;
+
         _rigidbody = GetComponent<Rigidbody>();
+
 	}
 	
 	void Update ()
 	{
+		//trun on off satan mode
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			active = !active;
+			sound_flag = true;
+			
+			if (active && sound_flag)
+			{
+				source.Stop();
+				source.PlayOneShot(source.clip);
+				sound_flag = false;
+			}
+		}
+		
 		if (!Satan.active)
 		{
 			_text.text = "";
 			flag = true;
 			_currKey = 0;
 		}
+		
 		
 		if (Satan.active)
 		{
@@ -68,6 +103,7 @@ public class Cultist : MonoBehaviour {
 		else
 			gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
+        
 
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0,vel);
@@ -88,7 +124,9 @@ public class Cultist : MonoBehaviour {
 			_rigidbody.velocity = new Vector3(-vel,0, _rigidbody.velocity.z);
 		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
 			_rigidbody.velocity = new Vector3(0,0, _rigidbody.velocity.z);
+
 	}
+	
 
 	private void OnCollisionEnter(Collision collision)
 	{

@@ -1783,35 +1783,35 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.09
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 4879145952324486, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
+    - target: {fileID: 4798038271480106, guid: e40d51535ada14294a0597f981b68fa4, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
