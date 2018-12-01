@@ -39,14 +39,14 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
-        
+        _patrolPositions = new List<Vector3>();
+        GameObject points = GameObject.Find("PatrolPoints");
+        for(int i = 0; i < transform.childCount; i++)
+            _patrolPositions.Add(points.transform.GetChild(i).position);
         Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
         Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
         Animator = GetComponentInChildren<Animator>();
-        _patrolPositions = new List<Vector3>();
-        _patrolPositions.Add(new Vector3(10, 0, 10));
-        _patrolPositions.Add(new Vector3(5, 0, 5));
-        _patrolPositions.Add(new Vector3(2, 0, 1));
+        
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);

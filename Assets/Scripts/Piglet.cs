@@ -8,6 +8,7 @@ public class Piglet : MonoBehaviour
     public float _vel = 3;
     public Rigidbody Rb;
     [SerializeField] private Animator animator;
+    float OnCollisionTimer = 10f;
 
     
     //[SerializeField] private float angular = 30;
@@ -42,9 +43,22 @@ public class Piglet : MonoBehaviour
             animator.SetBool("Left", false);
             animator.SetBool("Up", false);
             animator.SetBool("Down", false);
+
+            OnCollisionTimer -= Time.deltaTime;
+            if (OnCollisionTimer <= 0)
+            {
+                gameObject.GetComponent<Rigidbody>().velocity =
+                -transform.forward.normalized * _vel;
+                OnCollisionTimer = 10f;
+            }
+            else
+            {
+                gameObject.GetComponent<Rigidbody>().velocity =
+               new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * _vel;
+            }
             
-            gameObject.GetComponent<Rigidbody>().velocity =
-                new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * _vel;
+            
+           
             //gameObject.GetComponent<Rigidbody2D>().angularVelocity = angular;
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
             if (Mathf.Abs(gameObject.GetComponent<Rigidbody>().velocity.x) >
