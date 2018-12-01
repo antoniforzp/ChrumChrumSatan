@@ -12,16 +12,16 @@ public class Piglet : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity =
-            new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * _vel;
+        gameObject.GetComponent<Rigidbody>().velocity =
+            new Vector3(Random.Range(-1f, 1f), 0,Random.Range(-1f, 1f)).normalized * _vel;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("piglet"))
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity =
-                new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * _vel;
+            gameObject.GetComponent<Rigidbody>().velocity =
+                new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * _vel;
             //gameObject.GetComponent<Rigidbody2D>().angularVelocity = angular;
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
         }

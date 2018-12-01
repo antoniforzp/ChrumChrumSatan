@@ -13,15 +13,15 @@ public class MarkerBounce : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Cultist 1");
-		init = transform.position.y - player.transform.position.y;
+		init = transform.position.z - player.transform.position.z;
 
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
-		if (((transform.position.y - player.transform.position.y) > (init + maxOffset)) ||
-		    ((transform.position.y - player.transform.position.y) < init))
+		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + offset);
+		if (((transform.position.z - player.transform.position.z) > (init + maxOffset)) ||
+		    ((transform.position.z - player.transform.position.z) < init))
 			offset *= -1;
 	}
 }
