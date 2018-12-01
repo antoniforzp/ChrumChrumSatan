@@ -43,8 +43,8 @@ public class Farmer : MonoBehaviour {
         GameObject points = GameObject.Find("PatrolPoints");
         for(int i = 0; i < transform.childCount; i++)
             _patrolPositions.Add(points.transform.GetChild(i).position);
-        Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
-        Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
+        //Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
+        //Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
         Animator = GetComponentInChildren<Animator>();
         
         _currentTarget = _patrolPositions[0];

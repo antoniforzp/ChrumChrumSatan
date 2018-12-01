@@ -19,6 +19,8 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private AudioClip SatanLaugh;
 	
 	[SerializeField] private AudioSource source;
+
+	private Animator animator;
 	
 	public static bool active = false;
 
@@ -63,11 +65,13 @@ public class Cultist : MonoBehaviour {
         Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
-		source = gameObject.GetComponent<AudioSource>();
-		source.clip = SatanLaugh;
+		//source = gameObject.GetComponent<AudioSource>();
+		//source.clip = SatanLaugh;
 
         _rigidbody = GetComponent<Rigidbody>();
         if (Number == 2) letters = "ghyuiopjklbnm";
+
+		animator = gameObject.GetComponent<Animator>();
 	}
 	
 	void Update ()
@@ -113,6 +117,8 @@ public class Cultist : MonoBehaviour {
                     if (_currKey == 4)
                     {
                         _touchedPiglet.gameObject.SetActive(false);
+	                    animator.SetTrigger("Kill");
+	                    StartCoroutine(Cooldown());
                         _text.text = "";
                         flag = true;
                         _currKey = 0;
@@ -126,47 +132,103 @@ public class Cultist : MonoBehaviour {
 
         if (Number == 1)
         {
-            if (Input.GetKey(KeyCode.W))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
-            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+	        if (Input.GetKey(KeyCode.W))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+		        animator.SetBool("Up", true);
+	        }
 
-            if (Input.GetKey(KeyCode.S))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-            if (Input.GetKeyUp(KeyCode.S))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+	        if (Input.GetKeyUp(KeyCode.W))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		        animator.SetBool("Up", false);
+	        }
 
-            if (Input.GetKey(KeyCode.D))
-                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-            if (Input.GetKeyUp(KeyCode.D))
-                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+	        if (Input.GetKey(KeyCode.S))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+		        animator.SetBool("Down", true);
+	        }
 
-            if (Input.GetKey(KeyCode.A))
-                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
-            if (Input.GetKeyUp(KeyCode.A))
-                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+	        if (Input.GetKeyUp(KeyCode.S))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		        animator.SetBool("Down", false);
+	        }
+
+	        if (Input.GetKey(KeyCode.D))
+	        {
+		        _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Right", true);
+	        }
+
+	        if (Input.GetKeyUp(KeyCode.D))
+	        {
+		        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Right", false);
+	        }
+
+	        if (Input.GetKey(KeyCode.A))
+	        {
+		        _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Left", true);
+	        }
+
+	        if (Input.GetKeyUp(KeyCode.A))
+	        {
+		        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Left", false);
+	        }
         }
         else
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
-            if (Input.GetKeyUp(KeyCode.UpArrow))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+	        if (Input.GetKey(KeyCode.UpArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+		        animator.SetBool("Up", true);
+	        }
 
-            if (Input.GetKey(KeyCode.DownArrow))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-            if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+	        if (Input.GetKeyUp(KeyCode.UpArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		        animator.SetBool("Up", false);
+	        }
 
-            if (Input.GetKey(KeyCode.RightArrow))
-                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+	        if (Input.GetKey(KeyCode.DownArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+		        animator.SetBool("Down", true);
+	        }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
-            if (Input.GetKeyUp(KeyCode.LeftArrow))
-                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+	        if (Input.GetKeyUp(KeyCode.DownArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+		        animator.SetBool("Down", false);
+	        }
+
+	        if (Input.GetKey(KeyCode.RightArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Right", true);
+	        }
+
+	        if (Input.GetKeyUp(KeyCode.RightArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Right", false);
+	        }
+
+	        if (Input.GetKey(KeyCode.LeftArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Left", true);
+	        }
+
+	        if (Input.GetKeyUp(KeyCode.LeftArrow))
+	        {
+		        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+		        animator.SetBool("Left", false);
+	        }
         }
 
 	}
@@ -199,5 +261,11 @@ public class Cultist : MonoBehaviour {
 	string Rand()
 	{
 		return letters[Random.Range(0, letters.Length)].ToString();
+	}
+
+	IEnumerator Cooldown()
+	{
+		yield return new WaitForSeconds(2);
+		animator.ResetTrigger("Kill");
 	}
 }
