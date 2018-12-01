@@ -40,6 +40,12 @@
           <e p="MarkerBounce.cs" t="Include" />
           <e p="MusicManager.cs" t="Include" />
           <e p="Piglet.cs" t="Include" />
+          <e p="PigletView.cs" t="Include" />
+          <e p="PowerUps" t="Include">
+            <e p="Matches.cs" t="Include" />
+            <e p="Poison.cs" t="Include" />
+            <e p="PowerUpSpawner.cs" t="Include" />
+          </e>
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />
           <e p="mainMenu" t="Include">
@@ -47,10 +53,6 @@
               <e p="Direction.cs" t="Include" />
               <e p="Field.cs" t="Include" />
               <e p="FieldGenerator.cs" t="Include" />
-              <e p="NavMeshLink.cs" t="Include" />
-              <e p="NavMeshModifier.cs" t="Include" />
-              <e p="NavMeshModifierVolume.cs" t="Include" />
-              <e p="NavMeshSurface.cs" t="Include" />
             </e>
             <e p="camera.cs" t="Include" />
             <e p="menuScript.cs" t="Include" />
