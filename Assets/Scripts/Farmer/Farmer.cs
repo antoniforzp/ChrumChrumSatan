@@ -7,16 +7,22 @@ public class Farmer : MonoBehaviour {
 
 
     List<Vector3> _patrolPositions;
-    
+    public int[] HuntCounter = { 0, 0 };
+    public List<Cultist> Cultists = new List<Cultist>();
     Vector3 _currentTarget;
     NavMeshAgent _agent;
+    public bool IsHunting = false;
+    public bool IsWaiting = false;
+    public float IsWaitingTimer = 1.5f;
 
+    public Animator Animator;
 
-
-    
 
     void Start()
     {
+        Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
+        Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
+        Animator = GetComponentInChildren<Animator>();
         _patrolPositions = new List<Vector3>();
         _patrolPositions.Add(new Vector3(10, 0, 10));
         _patrolPositions.Add(new Vector3(5, 0, 5));
@@ -24,15 +30,68 @@ public class Farmer : MonoBehaviour {
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
+        
     }
 
     void Update()
     {
-       if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
-       {
-            _currentTarget = RandomDest();
-            _agent.SetDestination(_currentTarget);
-       }
+
+        if (!IsHunting)
+        {
+            
+
+            if (!IsWaiting)
+            {
+
+                if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+                {
+                    IsWaiting = true;
+                    AnimatorIdle();
+                }
+            }
+            else
+            {
+                IsWaitingTimer -= Time.deltaTime;
+                if (IsWaitingTimer <= 0f)
+                {
+                    IsWaiting = false;
+                    IsWaitingTimer = 1.5f;
+                    _currentTarget = RandomDest();
+                    _agent.SetDestination(_currentTarget);
+                    Animator.enabled = true;
+                    
+                }
+            }
+        }
+        else
+        {
+            _agent.velocity *= 4;
+            if (HuntCounter[0] != 0)
+            {
+                if (HuntCounter[1] != 0)
+                {
+                    if (Vector3.Distance(transform.position, new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z)) <
+                        Vector3.Distance(transform.position, new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z)))
+                        _currentTarget = new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z);
+                    else _currentTarget = new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z);
+                }
+                else
+                {
+                    _currentTarget = new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z);
+                }
+            }
+            else if (HuntCounter[1] != 0)
+            {
+                _currentTarget = new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z);
+            }
+            else
+            {
+                IsHunting = false;
+                _currentTarget = RandomDest();
+                _agent.SetDestination(_currentTarget);
+            }
+            
+        }
     }
 
     Vector3 RandomDest()
@@ -44,6 +103,12 @@ public class Farmer : MonoBehaviour {
         }
         return random;
     }
+
+    void AnimatorIdle()
+    {
+        Animator.enabled = false;
+    }
+
     #region OldCode
     /*   public int Width = 18, Height = 10;
        public Queue<Field> Frontier { get; set; }

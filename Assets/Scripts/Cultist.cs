@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.WSA;
 
 public class Cultist : MonoBehaviour {
-    
+
+    public int Number = 1;
+    public Farmer Farmer;
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
 	
@@ -39,91 +41,139 @@ public class Cultist : MonoBehaviour {
 		set
 		{
 			_isBeast = value;
-			if (value)
-			{
-				_currKey = 0;
-			}
+            if (value)
+            {
+                vel = 7;
+                _currKey = 0;
+                gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+                _text.text = "";
+                flag = true;
+            }
+            else vel = 4;
 		}
 	}
 
 	
 	void Start () {
-		//sprite
+        Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
 		source = gameObject.GetComponent<AudioSource>();
 		source.clip = SatanLaugh;
 
         _rigidbody = GetComponent<Rigidbody>();
-
+        if (Number == 2) letters = "ghyuiopjklbnm";
 	}
 	
 	void Update ()
 	{
-		//trun on off satan mode
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			active = !active;
-			sound_flag = true;
-			
-			if (active && sound_flag)
-			{
-				source.Stop();
-				source.PlayOneShot(source.clip);
-				sound_flag = false;
-			}
-		}
-		
-		if (!Satan.active)
-		{
-			_text.text = "";
-			flag = true;
-			_currKey = 0;
-		}
-		
-		
-		if (Satan.active)
-		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
-			if (_currKey <= 4)
-			{
-				if (Input.GetKeyDown(_keys[_currKey]))
-				{
-					if (_currKey == 4)
-					{
-						_touchedPiglet.gameObject.SetActive(false);
-						_text.text = "";
-						flag = true;
-						_currKey = 0;
-					}
-					_currKey++;
-				}
-			}
-		}
-		else
-			gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+        //trun on off satan mode
+        if (Number == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
 
-        
+                IsBeast = !IsBeast;
+                if (!IsBeast)
+                {
+                    Farmer.HuntCounter[Number - 1] = 0;
+                }
+                sound_flag = true;
 
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0,vel);
-		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+                if (IsBeast && sound_flag)
+                {
+                    source.Stop();
+                    source.PlayOneShot(source.clip);
+                    sound_flag = false;
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+
+                IsBeast = !IsBeast;
+                if (!IsBeast)
+                {
+                    Farmer.HuntCounter[Number - 1] = 0;
+                }
+                sound_flag = true;
+
+                if (IsBeast && sound_flag)
+                {
+                    source.Stop();
+                    source.PlayOneShot(source.clip);
+                    sound_flag = false;
+                }
+            }
+        }
 		
-		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-		if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-		 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-		
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			_rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-			_rigidbody.velocity = new Vector3(0, 0,_rigidbody.velocity.z);
-		
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			_rigidbody.velocity = new Vector3(-vel,0, _rigidbody.velocity.z);
-		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
-			_rigidbody.velocity = new Vector3(0,0, _rigidbody.velocity.z);
+		if (IsBeast)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
+            if (_currKey <= 4)
+            {
+                if (Input.GetKeyDown(_keys[_currKey]))
+                {
+                    if (_currKey == 4)
+                    {
+                        _touchedPiglet.gameObject.SetActive(false);
+                        _text.text = "";
+                        flag = true;
+                        _currKey = 0;
+                    }
+                    _currKey++;
+                }
+            }
+        }
+
+
+
+        if (Number == 1)
+        {
+            if (Input.GetKey(KeyCode.W))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.S))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+            if (Input.GetKeyUp(KeyCode.S))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.D))
+                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.D))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+
+            if (Input.GetKey(KeyCode.A))
+                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.A))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.DownArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+            if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.RightArrow))
+                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+        }
 
 	}
 	
@@ -132,7 +182,7 @@ public class Cultist : MonoBehaviour {
 	{
 		if (collision.gameObject.CompareTag("piglet"))
 		{
-			if (Satan.active && flag)
+			if (IsBeast && flag)
 			{
 				_touchedPiglet = collision.gameObject.GetComponent<Piglet>();
 				purge();
