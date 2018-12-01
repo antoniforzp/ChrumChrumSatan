@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.WSA;
 
 public class Cultist : MonoBehaviour {
-    
+
+    public int Number = 1;
+    public Farmer Farmer;
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
 	
@@ -39,16 +41,21 @@ public class Cultist : MonoBehaviour {
 		set
 		{
 			_isBeast = value;
-			if (value)
-			{
-				_currKey = 0;
-			}
+            if (value)
+            {
+                vel = 7;
+                _currKey = 0;
+                gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+                _text.text = "";
+                flag = true;
+            }
+            else vel = 4;
 		}
 	}
 
 	
 	void Start () {
-		//sprite
+        Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
 		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
 		source = gameObject.GetComponent<AudioSource>();
@@ -63,10 +70,15 @@ public class Cultist : MonoBehaviour {
 		//trun on off satan mode
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			active = !active;
+            
+			IsBeast = !IsBeast;
+            if (!IsBeast)
+            {
+                Farmer.HuntCounter[Number - 1] = 0;
+            }
 			sound_flag = true;
 			
-			if (active && sound_flag)
+			if (IsBeast && sound_flag)
 			{
 				source.Stop();
 				source.PlayOneShot(source.clip);
@@ -74,35 +86,26 @@ public class Cultist : MonoBehaviour {
 			}
 		}
 		
-		if (!Satan.active)
-		{
-			_text.text = "";
-			flag = true;
-			_currKey = 0;
-		}
-		
-		
-		if (Satan.active)
-		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
-			if (_currKey <= 4)
-			{
-				if (Input.GetKeyDown(_keys[_currKey]))
-				{
-					if (_currKey == 4)
-					{
-						_touchedPiglet.gameObject.SetActive(false);
-						_text.text = "";
-						flag = true;
-						_currKey = 0;
-					}
-					_currKey++;
-				}
-			}
-		}
-		else
-			gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
-
+		if (IsBeast)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
+            if (_currKey <= 4)
+            {
+                if (Input.GetKeyDown(_keys[_currKey]))
+                {
+                    if (_currKey == 4)
+                    {
+                        _touchedPiglet.gameObject.SetActive(false);
+                        _text.text = "";
+                        flag = true;
+                        _currKey = 0;
+                    }
+                    _currKey++;
+                }
+            }
+        }
+       
+        
         
 
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -132,7 +135,7 @@ public class Cultist : MonoBehaviour {
 	{
 		if (collision.gameObject.CompareTag("piglet"))
 		{
-			if (Satan.active && flag)
+			if (IsBeast && flag)
 			{
 				_touchedPiglet = collision.gameObject.GetComponent<Piglet>();
 				purge();

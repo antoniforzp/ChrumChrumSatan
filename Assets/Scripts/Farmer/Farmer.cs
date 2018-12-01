@@ -7,12 +7,13 @@ public class Farmer : MonoBehaviour {
 
 
     List<Vector3> _patrolPositions;
+    public int[] HuntCounter = { 0, 0 };
     
     Vector3 _currentTarget;
     NavMeshAgent _agent;
-
-
-
+    public bool IsHunting = false;
+    public bool IsWaiting = false;
+    public float IsWaitingTimer = 1.5f;
     
 
     void Start()
@@ -24,15 +25,36 @@ public class Farmer : MonoBehaviour {
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
+         
     }
 
     void Update()
     {
-       if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
-       {
-            _currentTarget = RandomDest();
-            _agent.SetDestination(_currentTarget);
-       }
+        if (!IsHunting)
+        {
+            if (!IsWaiting)
+            {
+                if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+                {
+                    IsWaiting = true;
+                }
+            }
+            else
+            {
+                IsWaitingTimer -= Time.deltaTime;
+                if (IsWaitingTimer <= 0f)
+                {
+                    IsWaiting = false;
+                    IsWaitingTimer = 1.5f;
+                    _currentTarget = RandomDest();
+                    _agent.SetDestination(_currentTarget);
+                }
+            }
+        }
+        else
+        {
+
+        }
     }
 
     Vector3 RandomDest()
@@ -44,6 +66,7 @@ public class Farmer : MonoBehaviour {
         }
         return random;
     }
+
     #region OldCode
     /*   public int Width = 18, Height = 10;
        public Queue<Field> Frontier { get; set; }

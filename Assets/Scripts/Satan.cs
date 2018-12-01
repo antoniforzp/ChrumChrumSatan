@@ -22,9 +22,6 @@ public class Satan : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 			active = !active;
-		if (active)
-		{
-			
-		}
+		
 	}
 }
