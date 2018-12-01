@@ -5,21 +5,32 @@ using UnityEngine;
 public class Piglet : MonoBehaviour
 {
     [SerializeField] private float vel = 3;
+
+    private string letters = "abcdefghijklmnopqrstuvwyz";
+
+    private char result [5];
     //[SerializeField] private float angular = 30;
 
-    // Use this for initialization
     void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * vel;
+        gameObject.GetComponent<Rigidbody2D>().velocity =
+            new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * vel;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("wall"))
+        if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("piglet"))
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * vel;
+            gameObject.GetComponent<Rigidbody2D>().velocity =
+                new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * vel;
             //gameObject.GetComponent<Rigidbody2D>().angularVelocity = angular;
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
+        }
+
+        if (collision.gameObject.CompareTag("cultist"))
+        {
+            if (Satan.active)
+                purge();
         }
     }
 
@@ -36,4 +47,13 @@ public class Piglet : MonoBehaviour
         else
             vel = 3;
     }
-}    
+
+    void purge()
+    {
+        for (int i = 0; i < 5 i++)
+        {
+            
+        }
+        Destroy(gameObject);
+    }
+}

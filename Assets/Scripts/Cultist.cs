@@ -7,6 +7,7 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private Sprite piglet;
 	[SerializeField] private Sprite cultist;
 	[SerializeField] private float vel;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,6 @@ public class Cultist : MonoBehaviour {
 	{
 		if (Satan.active)
 			gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
-
 		else
 			gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
 
@@ -43,4 +43,6 @@ public class Cultist : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 	}
+	
+	
 }

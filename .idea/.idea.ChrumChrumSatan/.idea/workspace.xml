@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62d02614-7c0e-4df3-88b5-16d465b78f0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ChrumChrumSatan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ChrumChrumSatan/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cultist.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cultist.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Piglet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Piglet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cultist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cultist.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piglet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Piglet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,33 +36,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="1570" />
+          <entry key="cs" value="1732" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="1570" />
+          <entry key="C#" value="1732" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Piglet.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state relative-caret-position="735">
+              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
               <folding>
-                <marker date="1543641923304" expanded="true" signature="6:78" ph="..." />
-                <marker date="1543641923304" expanded="true" signature="115:1156" ph="{...}" />
-                <marker date="1543641923304" expanded="true" signature="166:248" ph="/* [SerializeField] private float angular = 30; ... */" />
-                <marker date="1543641923304" expanded="true" signature="265:411" ph="{...}" />
-                <marker date="1543641923304" expanded="true" signature="470:892" ph="{...}" />
-                <marker date="1543641923304" expanded="true" signature="529:886" ph="{...}" />
-                <marker date="1543641923304" expanded="true" signature="690:876" ph="/* gameObject.GetComponent&lt;Rigidbody2D&gt;().angularVelocity = angular; ... */" />
-                <marker date="1543641923304" expanded="true" signature="894:1040" ph="/* private void OnCollisionExit2D(Collision2D collision) ... */" />
-                <marker date="1543641923304" expanded="true" signature="1059:1154" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="6:78" ph="..." />
+                <marker date="1543649716153" expanded="true" signature="115:1499" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="289:447" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="506:1121" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="610:983" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="787:973" ph="/* gameObject.GetComponent&lt;Rigidbody2D&gt;().angularVelocity = angular; ... */" />
+                <marker date="1543649716153" expanded="true" signature="1040:1115" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="1123:1269" ph="/* private void OnCollisionExit2D(Collision2D collision) ... */" />
+                <marker date="1543649716153" expanded="true" signature="1288:1383" ph="{...}" />
+                <marker date="1543649716153" expanded="true" signature="1401:1497" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -83,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scenery.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="25" />
+            <state relative-caret-position="60">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <marker date="1543643272659" expanded="false" signature="6:78" ph="..." />
                 <marker date="1543643272659" expanded="true" signature="116:532" ph="{...}" />
@@ -98,23 +102,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Cultist.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+            <state relative-caret-position="645">
+              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
               <folding>
-                <marker date="1543644572968" expanded="false" signature="6:78" ph="..." />
-                <marker date="1543644572968" expanded="true" signature="117:2091" ph="{...}" />
-                <marker date="1543644572968" expanded="true" signature="288:353" ph="{...}" />
-                <marker date="1543644572968" expanded="true" signature="407:2089" ph="{...}" />
+                <marker date="1543646884376" expanded="false" signature="6:78" ph="..." />
+                <marker date="1543646884376" expanded="true" signature="117:2096" ph="{...}" />
+                <marker date="1543646884376" expanded="true" signature="290:355" ph="{...}" />
+                <marker date="1543646884376" expanded="true" signature="409:2090" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MarkerBounce.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+            <state relative-caret-position="375">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <marker date="1543645568475" expanded="false" signature="6:78" ph="..." />
                 <marker date="1543645568475" expanded="true" signature="121:774" ph="{...}" />
@@ -141,10 +145,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Satan.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Piglet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenery.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Cultist.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MarkerBounce.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Cultist.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Piglet.cs" />
       </list>
     </option>
   </component>
@@ -154,7 +158,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="240" />
     <option name="y" value="130" />
     <option name="width" value="1440" />
@@ -242,12 +246,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543637123012</updated>
-      <workItem from="1543637126386" duration="8265000" />
+      <workItem from="1543637126386" duration="11405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8265000" />
+    <option name="totallyTimeSpent" value="11405000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -297,20 +301,28 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Piglet.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MarkerBounce.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="375">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
-            <marker date="1543641923304" expanded="true" signature="6:78" ph="..." />
-            <marker date="1543641923304" expanded="true" signature="115:1156" ph="{...}" />
-            <marker date="1543641923304" expanded="true" signature="166:248" ph="/* [SerializeField] private float angular = 30; ... */" />
-            <marker date="1543641923304" expanded="true" signature="265:411" ph="{...}" />
-            <marker date="1543641923304" expanded="true" signature="470:892" ph="{...}" />
-            <marker date="1543641923304" expanded="true" signature="529:886" ph="{...}" />
-            <marker date="1543641923304" expanded="true" signature="690:876" ph="/* gameObject.GetComponent&lt;Rigidbody2D&gt;().angularVelocity = angular; ... */" />
-            <marker date="1543641923304" expanded="true" signature="894:1040" ph="/* private void OnCollisionExit2D(Collision2D collision) ... */" />
-            <marker date="1543641923304" expanded="true" signature="1059:1154" ph="{...}" />
+            <marker date="1543645568475" expanded="false" signature="6:78" ph="..." />
+            <marker date="1543645568475" expanded="true" signature="121:774" ph="{...}" />
+            <marker date="1543645568475" expanded="true" signature="321:426" ph="{...}" />
+            <marker date="1543645568475" expanded="true" signature="486:772" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scenery.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <marker date="1543643272659" expanded="false" signature="6:78" ph="..." />
+            <marker date="1543643272659" expanded="true" signature="116:532" ph="{...}" />
+            <marker date="1543643272659" expanded="true" signature="252:316" ph="{...}" />
+            <marker date="1543643272659" expanded="true" signature="370:530" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -328,41 +340,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scenery.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="25" />
-          <folding>
-            <marker date="1543643272659" expanded="false" signature="6:78" ph="..." />
-            <marker date="1543643272659" expanded="true" signature="116:532" ph="{...}" />
-            <marker date="1543643272659" expanded="true" signature="252:316" ph="{...}" />
-            <marker date="1543643272659" expanded="true" signature="370:530" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Cultist.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        <state relative-caret-position="645">
+          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
           <folding>
-            <marker date="1543644572968" expanded="false" signature="6:78" ph="..." />
-            <marker date="1543644572968" expanded="true" signature="117:2091" ph="{...}" />
-            <marker date="1543644572968" expanded="true" signature="288:353" ph="{...}" />
-            <marker date="1543644572968" expanded="true" signature="407:2089" ph="{...}" />
+            <marker date="1543646884376" expanded="false" signature="6:78" ph="..." />
+            <marker date="1543646884376" expanded="true" signature="117:2096" ph="{...}" />
+            <marker date="1543646884376" expanded="true" signature="290:355" ph="{...}" />
+            <marker date="1543646884376" expanded="true" signature="409:2090" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MarkerBounce.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Piglet.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+        <state relative-caret-position="735">
+          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
           <folding>
-            <marker date="1543645568475" expanded="false" signature="6:78" ph="..." />
-            <marker date="1543645568475" expanded="true" signature="121:774" ph="{...}" />
-            <marker date="1543645568475" expanded="true" signature="321:426" ph="{...}" />
-            <marker date="1543645568475" expanded="true" signature="486:772" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="6:78" ph="..." />
+            <marker date="1543649716153" expanded="true" signature="115:1499" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="289:447" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="506:1121" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="610:983" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="787:973" ph="/* gameObject.GetComponent&lt;Rigidbody2D&gt;().angularVelocity = angular; ... */" />
+            <marker date="1543649716153" expanded="true" signature="1040:1115" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="1123:1269" ph="/* private void OnCollisionExit2D(Collision2D collision) ... */" />
+            <marker date="1543649716153" expanded="true" signature="1288:1383" ph="{...}" />
+            <marker date="1543649716153" expanded="true" signature="1401:1497" ph="{...}" />
           </folding>
         </state>
       </provider>
