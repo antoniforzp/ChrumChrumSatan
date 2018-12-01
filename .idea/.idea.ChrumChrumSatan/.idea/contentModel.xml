@@ -4,8 +4,24 @@
     <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_ChrumChrumSatan.1491313362.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="NavMeshComponents" t="Include">
+          <e p="Editor" t="Include">
+            <e p="NavMeshComponentsGUIUtility.cs" t="Include" />
+            <e p="NavMeshLinkEditor.cs" t="Include" />
+            <e p="NavMeshModifierEditor.cs" t="Include" />
+            <e p="NavMeshModifierVolumeEditor.cs" t="Include" />
+            <e p="NavMeshSurfaceEditor.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="NavMeshLink.cs" t="Include" />
+            <e p="NavMeshModifier.cs" t="Include" />
+            <e p="NavMeshModifierVolume.cs" t="Include" />
+            <e p="NavMeshSurface.cs" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="Cultist.cs" t="Include" />
           <e p="Farmer" t="Include">
@@ -17,10 +33,6 @@
             <e p="Direction.cs" t="Include" />
             <e p="Field.cs" t="Include" />
             <e p="FieldGenerator.cs" t="Include" />
-            <e p="NavMeshLink.cs" t="Include" />
-            <e p="NavMeshModifier.cs" t="Include" />
-            <e p="NavMeshModifierVolume.cs" t="Include" />
-            <e p="NavMeshSurface.cs" t="Include" />
           </e>
           <e p="Piglet.cs" t="Include" />
           <e p="Satan.cs" t="Include" />
