@@ -7,12 +7,31 @@ public class Farmer : MonoBehaviour {
 
 
     List<Vector3> _patrolPositions;
-    public int[] HuntCounter = { 0, 0 };
     public List<Cultist> Cultists = new List<Cultist>();
-    Vector3 _currentTarget;
+    public Vector3 _currentTarget;
     NavMeshAgent _agent;
-    public bool IsHunting = false;
+    private bool _isHunting = false;
+    public void SetIsHunting(bool isHunting, Vector3 target)
+    {
+        if (isHunting)
+        {
+            _isHunting = true;
+            _currentTarget = target;
+            _agent.speed = 10;
+            _agent.SetDestination(_currentTarget);
+            Animator.enabled = true;
+        }
+        else
+        {
+            _isHunting = false;
+            _currentTarget = RandomDest();
+            _agent.SetDestination(_currentTarget);
+            _agent.speed = 2;
+        }
+    }
+
     public bool IsWaiting = false;
+   
     public float IsWaitingTimer = 1.5f;
 
     public Animator Animator;
@@ -20,6 +39,7 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
+        
         Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
         Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
         Animator = GetComponentInChildren<Animator>();
@@ -30,16 +50,15 @@ public class Farmer : MonoBehaviour {
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
-        
+        _agent.speed = 2;
+
     }
 
     void Update()
     {
 
-        if (!IsHunting)
+        if (!_isHunting)
         {
-            
-
             if (!IsWaiting)
             {
 
@@ -65,33 +84,13 @@ public class Farmer : MonoBehaviour {
         }
         else
         {
-            _agent.velocity *= 4;
-            if (HuntCounter[0] != 0)
+            if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
             {
-                if (HuntCounter[1] != 0)
-                {
-                    if (Vector3.Distance(transform.position, new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z)) <
-                        Vector3.Distance(transform.position, new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z)))
-                        _currentTarget = new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z);
-                    else _currentTarget = new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z);
-                }
-                else
-                {
-                    _currentTarget = new Vector3(Cultists[0].transform.position.x, transform.position.y, Cultists[0].transform.position.z);
-                }
+                SetIsHunting(false, Vector3.zero);
+                IsWaiting = false;
             }
-            else if (HuntCounter[1] != 0)
-            {
-                _currentTarget = new Vector3(Cultists[1].transform.position.x, transform.position.y, Cultists[1].transform.position.z);
-            }
-            else
-            {
-                IsHunting = false;
-                _currentTarget = RandomDest();
-                _agent.SetDestination(_currentTarget);
-            }
-            
         }
+        
     }
 
     Vector3 RandomDest()

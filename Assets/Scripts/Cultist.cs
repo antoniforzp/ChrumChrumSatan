@@ -43,13 +43,18 @@ public class Cultist : MonoBehaviour {
 			_isBeast = value;
             if (value)
             {
+                gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
                 vel = 7;
                 _currKey = 0;
-                gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+
                 _text.text = "";
                 flag = true;
             }
-            else vel = 4;
+            else
+            {
+                vel = 4;
+                gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
+            }
 		}
 	}
 
@@ -72,14 +77,7 @@ public class Cultist : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 IsBeast = !IsBeast;
-                if (!IsBeast)
-                {
-                    Farmer.HuntCounter[Number - 1] = 0;
-                }
-                sound_flag = true;
-
                 if (IsBeast && sound_flag)
                 {
                     source.Stop();
@@ -94,10 +92,7 @@ public class Cultist : MonoBehaviour {
             {
 
                 IsBeast = !IsBeast;
-                if (!IsBeast)
-                {
-                    Farmer.HuntCounter[Number - 1] = 0;
-                }
+                
                 sound_flag = true;
 
                 if (IsBeast && sound_flag)
@@ -111,7 +106,6 @@ public class Cultist : MonoBehaviour {
 		
 		if (IsBeast)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = cultist;
             if (_currKey <= 4)
             {
                 if (Input.GetKeyDown(_keys[_currKey]))

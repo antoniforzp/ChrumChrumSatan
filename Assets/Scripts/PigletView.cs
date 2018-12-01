@@ -17,24 +17,19 @@ public class PigletView : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         
-
         if (col.gameObject.tag == "cultist")
         {
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
             {
                 Debug.Log("enterIsBeast!");
-                farmer.IsHunting = true;
-                farmer.HuntCounter[cultist.Number - 1]++;
-                piglet._vel = 10f;
-                piglet.Rb.velocity *= 10f / 3;
-               
+                farmer.SetIsHunting(true, cultist.transform.position);
             }
         }
     }
 
 
-    private void OnTriggerStay(Collider col)
+    /*private void OnTriggerStay(Collider col)
     {
         
         if (col.gameObject.tag == "cultist")
@@ -46,9 +41,9 @@ public class PigletView : MonoBehaviour
                 piglet._vel = 10f;
             }
         }
-    }
+    }*/
 
-    private void OnTriggerExit(Collider col)
+    /*private void OnTriggerExit(Collider col)
     {
         
         if (col.gameObject.tag == "cultist")
@@ -61,5 +56,5 @@ public class PigletView : MonoBehaviour
                 piglet._vel = 3f;
             }
         }
-    }
+    }*/
 }

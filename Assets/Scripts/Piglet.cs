@@ -73,10 +73,11 @@ public class Piglet : MonoBehaviour
 
     void Update()
     {
-        //if (Satan.active)
-         //   _vel = 10;
-        //else
-        //    _vel = 3;
+        if (Satan.active)
+            
+            _vel = 10;
+        else
+            _vel = 3;
     }
 
     public void die()
