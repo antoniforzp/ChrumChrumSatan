@@ -44,16 +44,14 @@ public class Cultist : MonoBehaviour {
 			{
 				if (Input.GetKeyDown(_keys[_currKey]))
 				{
-					_currKey++;
-
 					if (_currKey == 4)
 					{
 						_touchedPiglet.gameObject.SetActive(false);
 						_text.text = "";
 						flag = true;
 						_currKey = 0;
-
 					}
+					_currKey++;
 				}
 			}
 		}
