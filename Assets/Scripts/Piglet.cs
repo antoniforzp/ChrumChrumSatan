@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class Piglet : MonoBehaviour
 {
     public float _vel = 3;
+    public Rigidbody Rb;
     [SerializeField] private Animator animator;
 
     
@@ -13,6 +14,7 @@ public class Piglet : MonoBehaviour
 
     void Start()
     {
+        Rb = GetComponent<Rigidbody>();
         gameObject.GetComponent<Rigidbody>().velocity =
             new Vector3(Random.Range(-1f, 1f), 0,Random.Range(-1f, 1f)).normalized * _vel;
         if (Mathf.Abs(gameObject.GetComponent<Rigidbody>().velocity.x) >

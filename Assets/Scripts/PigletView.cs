@@ -17,6 +17,7 @@ public class PigletView : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         
+
         if (col.gameObject.tag == "cultist")
         {
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
@@ -26,6 +27,7 @@ public class PigletView : MonoBehaviour
                 farmer.IsHunting = true;
                 farmer.HuntCounter[cultist.Number - 1]++;
                 piglet._vel = 10f;
+                piglet.Rb.velocity *= 10f / 3;
                
             }
         }

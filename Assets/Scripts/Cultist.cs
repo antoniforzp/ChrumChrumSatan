@@ -62,29 +62,52 @@ public class Cultist : MonoBehaviour {
 		source.clip = SatanLaugh;
 
         _rigidbody = GetComponent<Rigidbody>();
-
+        if (Number == 2) letters = "ghyuiopjklbnm";
 	}
 	
 	void Update ()
 	{
-		//trun on off satan mode
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-            
-			IsBeast = !IsBeast;
-            if (!IsBeast)
+        //trun on off satan mode
+        if (Number == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Farmer.HuntCounter[Number - 1] = 0;
+
+                IsBeast = !IsBeast;
+                if (!IsBeast)
+                {
+                    Farmer.HuntCounter[Number - 1] = 0;
+                }
+                sound_flag = true;
+
+                if (IsBeast && sound_flag)
+                {
+                    source.Stop();
+                    source.PlayOneShot(source.clip);
+                    sound_flag = false;
+                }
             }
-			sound_flag = true;
-			
-			if (IsBeast && sound_flag)
-			{
-				source.Stop();
-				source.PlayOneShot(source.clip);
-				sound_flag = false;
-			}
-		}
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+
+                IsBeast = !IsBeast;
+                if (!IsBeast)
+                {
+                    Farmer.HuntCounter[Number - 1] = 0;
+                }
+                sound_flag = true;
+
+                if (IsBeast && sound_flag)
+                {
+                    source.Stop();
+                    source.PlayOneShot(source.clip);
+                    sound_flag = false;
+                }
+            }
+        }
 		
 		if (IsBeast)
         {
@@ -104,29 +127,53 @@ public class Cultist : MonoBehaviour {
                 }
             }
         }
-       
-        
-        
 
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0,vel);
-		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-		
-		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-		if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-		 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-		
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			_rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-			_rigidbody.velocity = new Vector3(0, 0,_rigidbody.velocity.z);
-		
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			_rigidbody.velocity = new Vector3(-vel,0, _rigidbody.velocity.z);
-		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
-			_rigidbody.velocity = new Vector3(0,0, _rigidbody.velocity.z);
+
+
+        if (Number == 1)
+        {
+            if (Input.GetKey(KeyCode.W))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.S))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+            if (Input.GetKeyUp(KeyCode.S))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.D))
+                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.D))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+
+            if (Input.GetKey(KeyCode.A))
+                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.A))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.DownArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+            if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+
+            if (Input.GetKey(KeyCode.RightArrow))
+                _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+                _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+                _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+        }
 
 	}
 	
