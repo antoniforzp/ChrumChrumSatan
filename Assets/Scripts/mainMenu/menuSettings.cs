@@ -17,5 +17,6 @@ public class menuSettings : MonoBehaviour
     public void setFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+        Debug.Log(isFullScreen);
     }
 }

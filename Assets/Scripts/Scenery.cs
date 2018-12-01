@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scenery : MonoBehaviour
 {
-
+    /*
 	[SerializeField] private Sprite floor;
 	[SerializeField] private Sprite pentagram;
 
@@ -21,5 +21,5 @@ public class Scenery : MonoBehaviour
 
 		else
 			gameObject.GetComponent<SpriteRenderer>().sprite = floor;
-	}
+	}*/
 }
