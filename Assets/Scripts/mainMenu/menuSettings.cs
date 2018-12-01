@@ -1,11 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class menuSettings : MonoBehaviour {
+
+public class menuSettings : MonoBehaviour
+{
+
+    public AudioMixer audiomixer;
 
     public void SetVolume(float volume)
     {
-        Debug.Log(volume);
+        audiomixer.SetFloat("volume", volume);
+    }
+
+    public void setFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
     }
 }

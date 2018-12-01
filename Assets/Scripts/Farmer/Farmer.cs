@@ -10,15 +10,17 @@ public class Farmer : MonoBehaviour {
     
     Vector3 _currentTarget;
     NavMeshAgent _agent;
-    Rigidbody _rb;
+
+
+
+    
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
         _patrolPositions = new List<Vector3>();
-        _patrolPositions.Add(new Vector3(10, transform.position.y, 10));
-        _patrolPositions.Add(new Vector3(5, transform.position.y, 5));
-        _patrolPositions.Add(new Vector3(2, transform.position.y, 1));
+        _patrolPositions.Add(new Vector3(10, 0, 10));
+        _patrolPositions.Add(new Vector3(5, 0, 5));
+        _patrolPositions.Add(new Vector3(2, 0, 1));
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
@@ -26,13 +28,13 @@ public class Farmer : MonoBehaviour {
 
     void Update()
     {
-        
-       if (transform.position == _currentTarget)
-        {
+        //Debug.Log("TP: " + transform.position + ", CT: " + _currentTarget);
+       if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+       {
             Debug.Log("huj");
             _currentTarget = RandomDest();
             _agent.SetDestination(_currentTarget);
-        }
+       }
     }
 
     Vector3 RandomDest()

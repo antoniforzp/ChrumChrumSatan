@@ -25,6 +25,7 @@ public class MusicManager : MonoBehaviour
 		{
 			source.clip = _satan;
 			source.Play();
+			// source.PlayOneShot(source.clip);
 			_satanist = true;
 		}
 		else if (!Satan.active && _satanist)

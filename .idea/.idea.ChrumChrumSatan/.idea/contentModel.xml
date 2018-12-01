@@ -7,6 +7,15 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Fonts" t="Include">
+          <e p="Documentation" t="Include">
+            <e p="JazzCreateAltKeys_BubbleFont.txt" t="Include" />
+            <e p="JazzCreateBubble_VersionHistory_1.1.txt" t="Include" />
+          </e>
+          <e p="Script" t="Include">
+            <e p="scriptTexttest.cs" t="Include" />
+          </e>
+        </e>
         <e p="NavMeshComponents" t="Include">
           <e p="Editor" t="Include">
             <e p="NavMeshComponentsGUIUtility.cs" t="Include" />
@@ -26,18 +35,23 @@
           <e p="Cultist.cs" t="Include" />
           <e p="Farmer" t="Include">
             <e p="Farmer.cs" t="Include" />
+            <e p="View.cs" t="Include" />
           </e>
           <e p="MarkerBounce.cs" t="Include" />
           <e p="MusicManager.cs" t="Include" />
-          <e p="Pathfinding" t="Include">
-            <e p="Direction.cs" t="Include" />
-            <e p="Field.cs" t="Include" />
-            <e p="FieldGenerator.cs" t="Include" />
-          </e>
           <e p="Piglet.cs" t="Include" />
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />
           <e p="mainMenu" t="Include">
+            <e p="Pathfinding" t="Include">
+              <e p="Direction.cs" t="Include" />
+              <e p="Field.cs" t="Include" />
+              <e p="FieldGenerator.cs" t="Include" />
+              <e p="NavMeshLink.cs" t="Include" />
+              <e p="NavMeshModifier.cs" t="Include" />
+              <e p="NavMeshModifierVolume.cs" t="Include" />
+              <e p="NavMeshSurface.cs" t="Include" />
+            </e>
             <e p="camera.cs" t="Include" />
             <e p="menuScript.cs" t="Include" />
             <e p="menuSettings.cs" t="Include" />
