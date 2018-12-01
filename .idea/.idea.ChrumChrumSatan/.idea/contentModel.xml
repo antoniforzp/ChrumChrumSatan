@@ -8,11 +8,28 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Cultist.cs" t="Include" />
+          <e p="Farmer" t="Include">
+            <e p="Farmer.cs" t="Include" />
+          </e>
           <e p="MarkerBounce.cs" t="Include" />
           <e p="MusicManager.cs" t="Include" />
+          <e p="Pathfinding" t="Include">
+            <e p="Direction.cs" t="Include" />
+            <e p="Field.cs" t="Include" />
+            <e p="FieldGenerator.cs" t="Include" />
+            <e p="NavMeshLink.cs" t="Include" />
+            <e p="NavMeshModifier.cs" t="Include" />
+            <e p="NavMeshModifierVolume.cs" t="Include" />
+            <e p="NavMeshSurface.cs" t="Include" />
+          </e>
           <e p="Piglet.cs" t="Include" />
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />
+          <e p="mainMenu" t="Include">
+            <e p="camera.cs" t="Include" />
+            <e p="menuScript.cs" t="Include" />
+            <e p="menuSettings.cs" t="Include" />
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Resources" t="Include">

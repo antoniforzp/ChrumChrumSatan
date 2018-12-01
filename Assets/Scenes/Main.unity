@@ -624,6 +624,10 @@ Prefab:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1819818421153472, guid: 90a9cd45cb31643db9fb99af9a57138f, type: 2}
+      propertyPath: m_Name
+      value: Cultist 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90a9cd45cb31643db9fb99af9a57138f, type: 2}
   m_IsPrefabAsset: 0
@@ -1425,6 +1429,7 @@ GameObject:
   - component: {fileID: 1510102241}
   - component: {fileID: 1510102242}
   - component: {fileID: 1510102243}
+  - component: {fileID: 1510102244}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1547,11 +1552,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 84af90300bf844e4598e3f88e78ff4d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1633,6 +1638,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1510102244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510102237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a44f9979fe1341a18762530de2452c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _satan: {fileID: 8300000, guid: 1134f6d280fbd45baa460d11f5b344cf, type: 3}
+  _noSatan: {fileID: 8300000, guid: 84af90300bf844e4598e3f88e78ff4d6, type: 3}
 --- !u!1 &1669947606
 GameObject:
   m_ObjectHideFlags: 0
