@@ -37,7 +37,7 @@ public class Piglet : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("piglet"))
+        if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("piglet") || collision.gameObject.CompareTag("cultist"))
         {
             animator.SetBool("Right", false);
             animator.SetBool("Left", false);
@@ -89,7 +89,7 @@ public class Piglet : MonoBehaviour
     {
         if (Satan.active)
             
-            _vel = 10;
+            _vel = 7;
         else
             _vel = 3;
     }

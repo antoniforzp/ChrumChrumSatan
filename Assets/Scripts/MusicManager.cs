@@ -5,34 +5,67 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
 	private AudioSource source;
-
+    public List<Cultist> Cultists = new List<Cultist>();
 	[SerializeField] private AudioClip _satan;
 	[SerializeField] private AudioClip _noSatan;
 	private bool _satanist;
 	
+
+
+
 	// Use this for initialization
 	void Start ()
 	{
 		source = gameObject.GetComponent<AudioSource>();
 		source.clip = _noSatan;
-		_satanist = false;
+		Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
+        Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
 	}
 	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Satan.active && !_satanist)
-		{
-			source.clip = _satan;
-			source.Play();
-			// source.PlayOneShot(source.clip);
-			_satanist = true;
-		}
-		else if (!Satan.active && _satanist)
-		{
-			source.clip = _noSatan;
-			source.Play();
-			_satanist = false;
-		}
-	}
+    public void SetMusic(bool isSatan, int CultistNumber)
+    {
+        if (isSatan)
+        {
+            if (CultistNumber == 1)
+            {
+                if (!Cultists[1].IsBeast)
+                {
+                    Debug.Log("Playing Kurwa");
+                    source.clip = _satan;
+                    source.Play();
+                }
+            }
+            else if (CultistNumber == 2)
+            {
+                if (!Cultists[0].IsBeast)
+                {
+                    source.clip = _satan;
+                    source.Play();
+                }
+            }
+
+        }
+        else
+        {
+            if (CultistNumber == 1)
+            {
+                if (!Cultists[1].IsBeast)
+                {
+                    source.clip = _noSatan;
+                    source.Play();
+                }
+            }
+            else if (CultistNumber == 2)
+            {
+                if (!Cultists[0].IsBeast)
+                {
+                    source.clip = _noSatan;
+                    source.Play();
+                }
+            }
+
+        }
+        
+    }
+
 }

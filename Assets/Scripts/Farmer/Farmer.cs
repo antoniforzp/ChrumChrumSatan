@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Farmer : MonoBehaviour {
 
-
+    public int CultistsCounter = 2;
     List<Vector3> _patrolPositions;
     public List<Cultist> Cultists = new List<Cultist>();
     public Vector3 _currentTarget;

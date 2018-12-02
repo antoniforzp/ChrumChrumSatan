@@ -20,8 +20,8 @@ public class Satan : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
-			active = !active;
+		//if (Input.GetKeyDown(KeyCode.Space))
+		//	active = !active;
 		
 	}
 }

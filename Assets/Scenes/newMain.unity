@@ -1483,6 +1483,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &620758346 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82512817979806758, guid: 90a9cd45cb31643db9fb99af9a57138f,
+    type: 2}
+  m_PrefabInternal: {fileID: 725939492}
 --- !u!1 &640106460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1833,41 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54123850357825086, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54123850357825086, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911548832655668, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: SatanLaugh
+      value: 
+      objectReference: {fileID: 8300000, guid: 82e6d21baf4974eff9b25e942e15701a, type: 3}
+    - target: {fileID: 114911548832655668, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 620758346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90a9cd45cb31643db9fb99af9a57138f, type: 2}
   m_IsPrefabAsset: 0
@@ -1986,6 +2026,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751616735}
   m_CullTransparentMesh: 0
+--- !u!82 &756834503 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82512817979806758, guid: 90a9cd45cb31643db9fb99af9a57138f,
+    type: 2}
+  m_PrefabInternal: {fileID: 837133780}
 --- !u!1 &757774741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1939893229197104, guid: e40d51535ada14294a0597f981b68fa4,
@@ -2224,6 +2269,31 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.40494838
+      objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.8759251
+      objectReference: {fileID: 0}
+    - target: {fileID: 212798222674408404, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911548832655668, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 756834503}
+    - target: {fileID: 114911548832655668, guid: 90a9cd45cb31643db9fb99af9a57138f,
+        type: 2}
+      propertyPath: SatanLaugh
+      value: 
+      objectReference: {fileID: 8300000, guid: 82e6d21baf4974eff9b25e942e15701a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90a9cd45cb31643db9fb99af9a57138f, type: 2}
   m_IsPrefabAsset: 0
@@ -2846,8 +2916,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244529799}
   m_LocalRotation: {x: 0.7070617, y: 0.007993641, z: -0.007993574, w: 0.7070615}
-  m_LocalPosition: {x: -1.01, y: 2.55, z: 4.72}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalPosition: {x: -0.38, y: 2.55, z: 7.87}
+  m_LocalScale: {x: 1.5, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1106125447}
   m_RootOrder: 0
@@ -3625,6 +3695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a44f9979fe1341a18762530de2452c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cultists: []
   _satan: {fileID: 8300000, guid: 1134f6d280fbd45baa460d11f5b344cf, type: 3}
   _noSatan: {fileID: 8300000, guid: 84af90300bf844e4598e3f88e78ff4d6, type: 3}
 --- !u!1 &1521258705
