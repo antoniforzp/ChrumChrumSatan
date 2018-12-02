@@ -216,6 +216,7 @@
           </e>
           <e p="Satan.cs" t="Include" />
           <e p="Scenery.cs" t="Include" />
+          <e p="WinScreenData.cs" t="Include" />
           <e p="mainMenu" t="Include">
             <e p="menuScript.cs" t="Include" />
             <e p="menuSettings.cs" t="Include" />
