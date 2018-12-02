@@ -379,7 +379,7 @@ public class Cultist : MonoBehaviour {
         {
             WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
             wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("win Screen");
+            SceneManager.LoadScene("winScreen");
         }
     }
 
@@ -393,7 +393,7 @@ public class Cultist : MonoBehaviour {
         {
             WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
             wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("win Screen");
+            SceneManager.LoadScene("winScreen");
         }
         gameObject.SetActive(false);
     }
