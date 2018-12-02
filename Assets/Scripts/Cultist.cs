@@ -323,10 +323,10 @@ public class Cultist : MonoBehaviour {
         }
 
 
+        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("menu");
 
-        
 
-	}
+    }
 	
 
 	private void OnCollisionEnter(Collision collision)
@@ -377,9 +377,9 @@ public class Cultist : MonoBehaviour {
         Farmer.PigCounter--;
         if (Farmer.PigCounter == 0)
         {
-            WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
-            wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("winScreen");
+            //WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
+            //wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
+            SceneManager.LoadScene("menu");
         }
     }
 
@@ -391,9 +391,9 @@ public class Cultist : MonoBehaviour {
         Farmer.CultistsCounter--;
         if (Farmer.CultistsCounter == 0)
         {
-            WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
-            wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("winScreen");
+            //WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
+            //wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
+            SceneManager.LoadScene("menu");
         }
         gameObject.SetActive(false);
     }

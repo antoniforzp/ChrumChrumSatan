@@ -14,7 +14,7 @@ public class menuScript : MonoBehaviour
 	IEnumerator Sleep(float time)
 	{
 		yield return new WaitForSeconds(time);
-		SceneManager.LoadScene("game_temp");
+		SceneManager.LoadScene("newMain");
 		Debug.Log("game_temp");
 	}
 

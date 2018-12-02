@@ -121,9 +121,9 @@ public class Farmer : MonoBehaviour {
             {
                 //_agent.speed = 11;
 
-                if (CultistsCounter == 2)
+                
                 //Couroutine To Play Death Animation
-                {
+                
                     cultist.IsDying = true;
                     cultist._rigidbody.velocity = Vector3.zero;
                     cultist.IsBeast = false;
@@ -139,7 +139,7 @@ public class Farmer : MonoBehaviour {
                             animator.SetBool("Active", false);
                     }
                     StartCoroutine(cultist.PlayDeathAnimation());
-                }
+                
             }
             //  }
             // --
