@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.WSA.Input;
-using ADBannerView = UnityEngine.iOS.ADBannerView;
 
 
 public class menuScript : MonoBehaviour
