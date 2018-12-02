@@ -33,6 +33,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Cultist.cs" t="Include" />
+          <e p="ExplosionController.cs" t="Include" />
           <e p="Farmer" t="Include">
             <e p="Farmer.cs" t="Include" />
             <e p="View.cs" t="Include" />
