@@ -11,10 +11,14 @@ public class Farmer : MonoBehaviour {
     public Vector3 _currentTarget;
     NavMeshAgent _agent;
     private bool _isHunting = false;
+    private AudioSource source;
+    [SerializeField] private AudioClip clip;
     public void SetIsHunting(bool isHunting, Vector3 target)
     {
         if (isHunting)
         {
+            source.Stop();
+            source.PlayOneShot(source.clip);
             _isHunting = true;
             _currentTarget = target;
             _agent.speed = 5;
@@ -40,6 +44,8 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
+        source.clip = clip;
         _patrolPositions = new List<Vector3>();
         GameObject points = GameObject.Find("PatrolPoints");
         for(int i = 0; i < transform.childCount; i++)
