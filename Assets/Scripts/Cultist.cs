@@ -28,6 +28,8 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private AudioSource source;
     [SerializeField] private AudioSource source2;
 
+    public Animator IcoAnimator;
+
 	private Animator animator;
 	
 	public static bool active = false;
@@ -61,6 +63,7 @@ public class Cultist : MonoBehaviour {
                 Music.SetMusic(true, Number);
                 _text.text = "";
                 Marker.sprite = Markers[1];
+                IcoAnimator.SetBool("Satan", true);
             }
             else
             {
@@ -68,6 +71,7 @@ public class Cultist : MonoBehaviour {
                 gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
                 Music.SetMusic(false, Number);
                 Marker.sprite = Markers[0];
+                IcoAnimator.SetBool("Satan", false);
             }
 		}
 	}
@@ -84,7 +88,11 @@ public class Cultist : MonoBehaviour {
 	    source2.clip = kill;
 
         _rigidbody = GetComponent<Rigidbody>();
-        if (Number == 2) letters = "ghyuiopjklbnm";
+        if (Number == 2)
+        {
+            letters = "ghyuiopjklbnm";
+        }
+        else IcoAnimator = GameObject.Find("Ico1").GetComponent<Animator>();
 
 		animator = gameObject.GetComponent<Animator>();
 	}
@@ -140,7 +148,7 @@ public class Cultist : MonoBehaviour {
 
                 AnimatorIdle();
 
-                
+
 
                 if (yDelta == 1) animator.SetBool("Up", true);
                 else if (yDelta == -1) animator.SetBool("Down", true);
@@ -151,7 +159,7 @@ public class Cultist : MonoBehaviour {
 
                 _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
 
-
+                #region OldCOde
                 /*if (Input.GetKey(KeyCode.W))
                 {
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
@@ -199,9 +207,27 @@ public class Cultist : MonoBehaviour {
                     _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
                     animator.SetBool("Left", false);
                 }*/
+                #endregion
             }
             else
             {
+                int xDelta = 0, yDelta = 0;
+
+                if (Input.GetKey(KeyCode.UpArrow)) yDelta++;
+                if (Input.GetKey(KeyCode.DownArrow)) yDelta--;
+                if (Input.GetKey(KeyCode.RightArrow)) xDelta++;
+                if (Input.GetKey(KeyCode.LeftArrow)) xDelta--;
+                AnimatorIdle();
+                if (yDelta == 1) animator.SetBool("Up", true);
+                else if (yDelta == -1) animator.SetBool("Down", true);
+
+                if (xDelta == 1)
+                    animator.SetBool("Right", true);
+                else if (xDelta == -1) animator.SetBool("Left", true);
+
+                _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
+                #region OldCode
+                /*
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
@@ -249,11 +275,11 @@ public class Cultist : MonoBehaviour {
                     _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
                     animator.SetBool("Left", false);
                 }
+            }*/
+                #endregion
             }
 
         }
-
-
         if (IsBeast)
         {
             if (_currKey <= 2)
@@ -295,6 +321,7 @@ public class Cultist : MonoBehaviour {
                 _touchedPiglet.Rb.velocity = Vector3.zero;
                 _touchedPiglet.Rb.drag = Mathf.Infinity;
                 _rigidbody.drag = Mathf.Infinity;
+                AnimatorIdle();
                 purge();
 			}
 		}
