@@ -194,6 +194,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ButtonControll.cs" t="Include" />
           <e p="Cultist.cs" t="Include" />
           <e p="Farmer" t="Include">
             <e p="Farmer.cs" t="Include" />
