@@ -91,6 +91,7 @@ public class Cultist : MonoBehaviour {
         if (Number == 2)
         {
             letters = "ghyuiopjklbnm";
+            IcoAnimator = GameObject.Find("Ico2").GetComponent<Animator>();
         }
         else IcoAnimator = GameObject.Find("Ico1").GetComponent<Animator>();
 
