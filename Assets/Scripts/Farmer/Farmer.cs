@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Farmer : MonoBehaviour {
 
+    public int PigCounter = 19;
     public int CultistsCounter = 2;
     List<Vector3> _patrolPositions;
     public List<Cultist> Cultists = new List<Cultist>();
@@ -20,7 +21,7 @@ public class Farmer : MonoBehaviour {
             if (!source.isPlaying) source.PlayOneShot(source.clip);
             _isHunting = true;
             _currentTarget = target;
-            _agent.speed = 5;
+            _agent.speed = 6f;
             //_agent.speed = 0;
             _agent.SetDestination(_currentTarget);
             Animator.enabled = true;
@@ -30,7 +31,7 @@ public class Farmer : MonoBehaviour {
             _isHunting = false;
             _currentTarget = RandomDest();
             _agent.SetDestination(_currentTarget);
-            _agent.speed = 2;
+            _agent.speed = 2f;
         }
     }
 
@@ -49,15 +50,15 @@ public class Farmer : MonoBehaviour {
         GameObject points = GameObject.Find("PatrolPoints");
         for(int i = 0; i < transform.childCount; i++)
             _patrolPositions.Add(points.transform.GetChild(i).position);
-        //Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
-        //Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
+        Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
+        Cultists.Add(GameObject.Find("Cultist 2").GetComponent<Cultist>());
         Animator = GetComponentInChildren<Animator>();
         
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
         //_agent.speed = 0;
-        _agent.speed = 2;
+        _agent.speed = 2f;
 
     }
 
@@ -118,7 +119,7 @@ public class Farmer : MonoBehaviour {
            Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
             {
-                _agent.speed = 11;
+                //_agent.speed = 11;
 
                 if (CultistsCounter == 2)
                 //Couroutine To Play Death Animation
@@ -134,6 +135,8 @@ public class Farmer : MonoBehaviour {
                         new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * piglet._vel;
                         piglet.Rb.drag = 0;
                         cultist._text.text = "";
+                        foreach (Animator animator in cultist.ButtonAnimators)
+                            animator.SetBool("Active", false);
                     }
                     StartCoroutine(cultist.PlayDeathAnimation());
                 }

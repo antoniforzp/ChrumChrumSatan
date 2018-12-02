@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Cultist : MonoBehaviour {
@@ -29,7 +30,7 @@ public class Cultist : MonoBehaviour {
     [SerializeField] private AudioSource source2;
 
     public Animator IcoAnimator;
-
+    public List<Animator> ButtonAnimators = new List<Animator>();
 	private Animator animator;
 	
 	public static bool active = false;
@@ -76,24 +77,34 @@ public class Cultist : MonoBehaviour {
 		}
 	}
 
-	
-	void Start () {
+
+    void Start() {
         Counter = GameObject.Find("Counter" + Number).GetComponent<TextMeshProUGUI>();
         Music = GameObject.Find("Main Camera").GetComponent<MusicManager>();
         Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
         KnifeSource = transform.GetChild(0).GetComponent<AudioSource>();
         Marker = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
-		source.clip = SatanLaugh;
-	    source2.clip = kill;
+        source.clip = SatanLaugh;
+        source2.clip = kill;
 
         _rigidbody = GetComponent<Rigidbody>();
         if (Number == 2)
         {
             letters = "ghyuiopjklbnm";
             IcoAnimator = GameObject.Find("Ico2").GetComponent<Animator>();
+            ButtonAnimators.Add(GameObject.Find("Key1_p2").GetComponent<Animator>());
+            ButtonAnimators.Add(GameObject.Find("Key2_p2").GetComponent<Animator>());
+            ButtonAnimators.Add(GameObject.Find("Key3_p2").GetComponent<Animator>());
         }
-        else IcoAnimator = GameObject.Find("Ico1").GetComponent<Animator>();
+        else
+        { 
+            ButtonAnimators.Add(GameObject.Find("Key1_p1").GetComponent<Animator>());
+            ButtonAnimators.Add(GameObject.Find("Key2_p1").GetComponent<Animator>());
+            ButtonAnimators.Add(GameObject.Find("Key3_p1").GetComponent<Animator>());
+        
+            IcoAnimator = GameObject.Find("Ico1").GetComponent<Animator>();
+        }
 
 		animator = gameObject.GetComponent<Animator>();
 	}
@@ -292,15 +303,21 @@ public class Cultist : MonoBehaviour {
                         _touchedPiglet.gameObject.SetActive(false);
                         source2.PlayOneShot(source2.clip);
                         Killed++;
+                        Farmer.SetIsHunting(true, transform.position);
                         Counter.text = Killed.ToString();
                         AnimatorIdle();
-                        
+                        ButtonAnimators[_currKey].SetBool("Active", false);
                         animator.SetBool("Kill", true);
-	                    StartCoroutine(Cooldown());
+                        StartCoroutine(Cooldown());
                         _text.text = "";
                         _currKey = 0;
                     }
-                    _currKey++;
+                    else
+                    {
+                        ButtonAnimators[_currKey].SetBool("Active", false);
+                        _currKey++;
+                        ButtonAnimators[_currKey].SetBool("Active", true);
+                    }
                 }
             }
         }
@@ -334,9 +351,10 @@ public class Cultist : MonoBehaviour {
 		for (int i = 0; i < 3;i++)
 		{
 			string key = Rand();
-			_text.text += " " + key;
+			_text.text += " " + key.ToUpper();
 			_keys[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), key.ToUpper());
 		}
+        ButtonAnimators[0].SetBool("Active", true);
     }
 
 	string Rand()
@@ -356,12 +374,27 @@ public class Cultist : MonoBehaviour {
         IsKilling = false;
         IsBeast = false;
         _rigidbody.drag = 0f;
+        Farmer.PigCounter--;
+        if (Farmer.PigCounter == 0)
+        {
+            WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
+            wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
+            SceneManager.LoadScene("win Screen");
+        }
     }
 
     public IEnumerator PlayDeathAnimation()
     {
         //SET DEATH BOOL
         yield return new WaitForSeconds(1f);
+        IcoAnimator.SetBool("Die", true);
+        Farmer.CultistsCounter--;
+        if (Farmer.CultistsCounter == 0)
+        {
+            WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
+            wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
+            SceneManager.LoadScene("win Screen");
+        }
         gameObject.SetActive(false);
     }
 
