@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_ChrumChrumSatan.-1746083097.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_ChrumChrumSatan.1491313362.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -195,6 +195,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="ButtonControll.cs" t="Include" />
+          <e p="Controls.cs" t="Include" />
           <e p="Cultist.cs" t="Include" />
           <e p="Farmer" t="Include">
             <e p="Farmer.cs" t="Include" />
@@ -218,6 +219,7 @@
           <e p="Scenery.cs" t="Include" />
           <e p="WinScreenData.cs" t="Include" />
           <e p="mainMenu" t="Include">
+            <e p="Music.cs" t="Include" />
             <e p="menuScript.cs" t="Include" />
             <e p="menuSettings.cs" t="Include" />
           </e>
