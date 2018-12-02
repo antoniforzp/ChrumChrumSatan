@@ -18,6 +18,7 @@ public class Farmer : MonoBehaviour {
             _isHunting = true;
             _currentTarget = target;
             _agent.speed = 10;
+            //_agent.speed = 0;
             _agent.SetDestination(_currentTarget);
             Animator.enabled = true;
         }
@@ -50,6 +51,7 @@ public class Farmer : MonoBehaviour {
         _currentTarget = _patrolPositions[0];
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
+        //_agent.speed = 0;
         _agent.speed = 2;
 
     }

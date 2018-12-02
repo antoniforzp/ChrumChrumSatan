@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.WSA;
+
 
 public class Cultist : MonoBehaviour {
 
-    public bool IsDying;
+    public Sprite[] Markers;
+    public int Killed = 0;
+    public TextMeshProUGUI Counter;
+    public bool IsDying = false;
+    public bool IsKilling = false;
     public MusicManager Music;
     public int Number = 1;
     public Farmer Farmer;
@@ -16,7 +20,7 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private bool _isBeast = false;
 	[SerializeField] private float vel;
 	
-	[SerializeField] private TextMeshProUGUI _text;
+	[SerializeField] public TextMeshProUGUI _text;
 	
 	[SerializeField] private AudioClip SatanLaugh;
 	
@@ -31,11 +35,13 @@ public class Cultist : MonoBehaviour {
 
 	private KeyCode[] _keys = new KeyCode[5];
 	private int _currKey;
-	private Piglet _touchedPiglet;
+	public Piglet _touchedPiglet;
 	
-	private bool flag = true;
 	private bool sound_flag = false;
 
+    public SpriteRenderer Marker;
+
+    public AudioSource KnifeSource;
 
     public Rigidbody _rigidbody;
     
@@ -52,23 +58,25 @@ public class Cultist : MonoBehaviour {
                 _currKey = 0;
                 Music.SetMusic(true, Number);
                 _text.text = "";
-                flag = true;
+                Marker.sprite = Markers[1];
             }
             else
             {
-                vel = 4;
+                vel = 5;
                 gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
                 Music.SetMusic(false, Number);
+                Marker.sprite = Markers[0];
             }
 		}
 	}
 
 	
 	void Start () {
+        Counter = GameObject.Find("Counter" + Number).GetComponent<TextMeshProUGUI>();
         Music = GameObject.Find("Main Camera").GetComponent<MusicManager>();
         Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
-		gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
-
+        KnifeSource = transform.GetChild(0).GetComponent<AudioSource>();
+        Marker = transform.GetChild(1).GetComponent<SpriteRenderer>();
 		source = gameObject.GetComponent<AudioSource>();
 		source.clip = SatanLaugh;
 
@@ -80,7 +88,7 @@ public class Cultist : MonoBehaviour {
 	
 	void Update ()
 	{
-        if (!IsDying)
+        if (!IsDying && !IsKilling)
         {
             //trun on off satan mode
             if (Number == 1)
@@ -223,17 +231,20 @@ public class Cultist : MonoBehaviour {
 
         if (IsBeast)
         {
-            if (_currKey <= 4)
+            if (_currKey <= 2)
             {
                 if (Input.GetKeyDown(_keys[_currKey]))
                 {
-                    if (_currKey == 4)
+                    if (_currKey == 2)
                     {
                         _touchedPiglet.gameObject.SetActive(false);
-	                    animator.SetTrigger("Kill");
+                        Killed++;
+                        Counter.text = Killed.ToString();
+                        AnimatorIdle();
+                        KnifeSource.Play();
+                        animator.SetBool("Kill", true);
 	                    StartCoroutine(Cooldown());
                         _text.text = "";
-                        flag = true;
                         _currKey = 0;
                     }
                     _currKey++;
@@ -252,36 +263,44 @@ public class Cultist : MonoBehaviour {
 	{
 		if (collision.gameObject.CompareTag("piglet"))
 		{
-            if (IsBeast && flag)
+            if (IsBeast && !IsKilling)
 			{
                 _touchedPiglet = collision.gameObject.GetComponent<Piglet>();
-				purge();
+                _touchedPiglet.Rb.velocity = Vector3.zero;
+                _touchedPiglet.Rb.drag = Mathf.Infinity;
+                _rigidbody.drag = Mathf.Infinity;
+                purge();
 			}
 		}
 	}
 
 	void purge()
 	{
-		for (int i = 0; i < 5;i++)
+        IsKilling = true;
+		for (int i = 0; i < 3;i++)
 		{
 			string key = Rand();
 			_text.text += " " + key;
 			_keys[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), key.ToUpper());
 		}
-		flag = false;
-		
-	}
+    }
 
 	string Rand()
 	{
 		return letters[Random.Range(0, letters.Length)].ToString();
 	}
 
+
+
+
 	IEnumerator Cooldown()
 	{
-		yield return new WaitForSeconds(2);
-		animator.ResetTrigger("Kill");
-	}
+        yield return new WaitForSeconds(2);
+		animator.SetBool("Kill", false);
+        IsKilling = false;
+        IsBeast = false;
+        _rigidbody.drag = 0f;
+    }
 
     public IEnumerator PlayDeathAnimation()
     {
@@ -289,4 +308,13 @@ public class Cultist : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
+
+    void AnimatorIdle()
+    {
+        animator.SetBool("Left", false);
+        animator.SetBool("Right", false);
+        animator.SetBool("Up", false);
+        animator.SetBool("Down", false);
+    }
+
 }
