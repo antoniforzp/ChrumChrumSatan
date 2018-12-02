@@ -6,11 +6,15 @@ public class PigletView : MonoBehaviour
 {
     Piglet piglet;
     Farmer farmer;
+    private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     void Awake()
     {
         piglet = transform.parent.GetComponent<Piglet>();
         farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
+        source = gameObject.GetComponent<AudioSource>();
+        source.clip = clip;
 
     }
 
@@ -23,6 +27,7 @@ public class PigletView : MonoBehaviour
             if (cultist.IsBeast)
             {
                 Debug.Log("enterIsBeast!");
+                source.PlayOneShot(source.clip);
                 farmer.SetIsHunting(true, cultist.transform.position);
             }
         }

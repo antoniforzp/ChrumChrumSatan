@@ -23,8 +23,10 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] public TextMeshProUGUI _text;
 	
 	[SerializeField] private AudioClip SatanLaugh;
+    [SerializeField] private AudioClip kill;
 	
 	[SerializeField] private AudioSource source;
+    [SerializeField] private AudioSource source2;
 
 	private Animator animator;
 	
@@ -77,8 +79,9 @@ public class Cultist : MonoBehaviour {
         Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
         KnifeSource = transform.GetChild(0).GetComponent<AudioSource>();
         Marker = transform.GetChild(1).GetComponent<SpriteRenderer>();
-		source = gameObject.GetComponent<AudioSource>();
+
 		source.clip = SatanLaugh;
+	    source2.clip = kill;
 
         _rigidbody = GetComponent<Rigidbody>();
         if (Number == 2) letters = "ghyuiopjklbnm";
@@ -238,6 +241,7 @@ public class Cultist : MonoBehaviour {
                     if (_currKey == 2)
                     {
                         _touchedPiglet.gameObject.SetActive(false);
+                        source2.PlayOneShot(source2.clip);
                         Killed++;
                         Counter.text = Killed.ToString();
                         AnimatorIdle();
