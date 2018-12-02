@@ -26,8 +26,10 @@ public class PigletView : MonoBehaviour
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
             {
+
                 Debug.Log("enterIsBeast!");
                 source.PlayOneShot(source.clip);
+
                 farmer.SetIsHunting(true, cultist.transform.position);
             }
         }

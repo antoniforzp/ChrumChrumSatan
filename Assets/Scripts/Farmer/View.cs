@@ -7,8 +7,8 @@ public class View : MonoBehaviour
 
     Farmer farmer;
     MusicManager Music;
-    bool IsCollidingWithWall;
-    List<GameObject> walls = new List<GameObject>();
+    
+   
 
     void Awake()
     {
@@ -18,13 +18,18 @@ public class View : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "wall")
+        if (col.gameObject.tag == "cultist")
         {
-            IsCollidingWithWall = true;
-            walls.Add(col.gameObject);
-        }
-        else if (col.gameObject.tag == "cultist")
-        {
+            /*RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out hit, 11f))
+            {
+                Debug.Log("kol!!");
+                if (hit.collider.gameObject.tag == "wall")
+                {
+                    Debug.Log("chuj kurwa");
+                    return;
+                }
+            }*/
 
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
@@ -56,15 +61,7 @@ public class View : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "wall")
-        {
-            
-            walls.Remove(col.gameObject);
-            if (walls.Count == 0) IsCollidingWithWall = false; 
-        }
-    }
+    
 }
 
    

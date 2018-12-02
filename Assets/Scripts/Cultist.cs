@@ -245,7 +245,7 @@ public class Cultist : MonoBehaviour {
                         Killed++;
                         Counter.text = Killed.ToString();
                         AnimatorIdle();
-                        KnifeSource.Play();
+                        
                         animator.SetBool("Kill", true);
 	                    StartCoroutine(Cooldown());
                         _text.text = "";
@@ -299,7 +299,9 @@ public class Cultist : MonoBehaviour {
 
 	IEnumerator Cooldown()
 	{
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
+        KnifeSource.Play();
+        yield return new WaitForSeconds(1.5f);
 		animator.SetBool("Kill", false);
         IsKilling = false;
         IsBeast = false;

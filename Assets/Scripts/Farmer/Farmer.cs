@@ -17,11 +17,10 @@ public class Farmer : MonoBehaviour {
     {
         if (isHunting)
         {
-            source.Stop();
-            source.PlayOneShot(source.clip);
+            if (!source.isPlaying) source.PlayOneShot(source.clip);
             _isHunting = true;
             _currentTarget = target;
-            _agent.speed = 10;
+            _agent.speed = 5;
             //_agent.speed = 0;
             _agent.SetDestination(_currentTarget);
             Animator.enabled = true;

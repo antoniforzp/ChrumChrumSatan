@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,13 +11,17 @@ public class MusicManager : MonoBehaviour
 	[SerializeField] private AudioClip _noSatan;
 	private bool _satanist;
     public GameObject DemonicDecorations;
-	
+    public PostProcessingBehaviour PostProcessingBehaviour;
+    public PostProcessingProfile SatanProfile;
+    public PostProcessingProfile NoSatanProfile;
+    
 
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
+        PostProcessingBehaviour = GetComponent<PostProcessingBehaviour>();
 		source = gameObject.GetComponent<AudioSource>();
 		source.clip = _noSatan;
 		Cultists.Add(GameObject.Find("Cultist 1").GetComponent<Cultist>());
@@ -37,6 +42,7 @@ public class MusicManager : MonoBehaviour
                     source.clip = _satan;
                     source.Play();
                     DemonicDecorations.SetActive(true);
+                    PostProcessingBehaviour.profile = SatanProfile;
                 }
             }
             else if (CultistNumber == 2)
@@ -47,6 +53,7 @@ public class MusicManager : MonoBehaviour
                     source.clip = _satan;
                     source.Play();
                     DemonicDecorations.SetActive(true);
+                    PostProcessingBehaviour.profile = SatanProfile;
                 }
             }
 
@@ -61,6 +68,7 @@ public class MusicManager : MonoBehaviour
                     source.clip = _noSatan;
                     source.Play();
                     DemonicDecorations.SetActive(false);
+                    PostProcessingBehaviour.profile = NoSatanProfile;
                 }
             }
             else if (CultistNumber == 2)
@@ -71,6 +79,7 @@ public class MusicManager : MonoBehaviour
                     source.clip = _noSatan;
                     source.Play();
                     DemonicDecorations.SetActive(false);
+                    PostProcessingBehaviour.profile = NoSatanProfile;
                 }
             }
 
