@@ -127,7 +127,29 @@ public class Cultist : MonoBehaviour {
 
             if (Number == 1)
             {
-                if (Input.GetKey(KeyCode.W))
+                int xDelta = 0, yDelta = 0;
+
+                if (Input.GetKey(KeyCode.W)) yDelta++;
+                if (Input.GetKey(KeyCode.S)) yDelta--;
+                if (Input.GetKey(KeyCode.D)) xDelta++;
+                if (Input.GetKey(KeyCode.A)) xDelta--;
+
+
+                AnimatorIdle();
+
+                
+
+                if (yDelta == 1) animator.SetBool("Up", true);
+                else if (yDelta == -1) animator.SetBool("Down", true);
+
+                if (xDelta == 1)
+                    animator.SetBool("Right", true);
+                else if (xDelta == -1) animator.SetBool("Left", true);
+
+                _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
+
+
+                /*if (Input.GetKey(KeyCode.W))
                 {
                     _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
                     animator.SetBool("Up", true);
@@ -173,7 +195,7 @@ public class Cultist : MonoBehaviour {
                 {
                     _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
                     animator.SetBool("Left", false);
-                }
+                }*/
             }
             else
             {

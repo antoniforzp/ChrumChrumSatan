@@ -9,7 +9,7 @@ public class Farmer : MonoBehaviour {
     List<Vector3> _patrolPositions;
     public List<Cultist> Cultists = new List<Cultist>();
     public Vector3 _currentTarget;
-    NavMeshAgent _agent;
+    public NavMeshAgent _agent;
     private bool _isHunting = false;
     private AudioSource source;
     [SerializeField] private AudioClip clip;
@@ -108,6 +108,42 @@ public class Farmer : MonoBehaviour {
             random = _patrolPositions[Random.Range(0, _patrolPositions.Count)];
         }
         return random;
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        
+        if (col.gameObject.tag == "cultist")
+        {
+           Cultist cultist = col.gameObject.GetComponent<Cultist>();
+            if (cultist.IsBeast)
+            {
+                _agent.speed = 11;
+
+                if (CultistsCounter == 2)
+                //Couroutine To Play Death Animation
+                {
+                    cultist.IsDying = true;
+                    cultist._rigidbody.velocity = Vector3.zero;
+                    cultist.IsBeast = false;
+                    cultist.Marker.sprite = null;
+                    if (cultist.IsKilling)
+                    {
+                        Piglet piglet = cultist._touchedPiglet;
+                        piglet.Rb.velocity =
+                        new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * piglet._vel;
+                        piglet.Rb.drag = 0;
+                        cultist._text.text = "";
+                    }
+                    StartCoroutine(cultist.PlayDeathAnimation());
+                }
+            }
+            //  }
+            // --
+            //else
+            // Load Win screen scene
+
+        }
     }
 
     void AnimatorIdle()
