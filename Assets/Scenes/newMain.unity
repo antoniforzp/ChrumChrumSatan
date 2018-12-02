@@ -4809,6 +4809,7 @@ GameObject:
   - component: {fileID: 1510102242}
   - component: {fileID: 1510102243}
   - component: {fileID: 1510102244}
+  - component: {fileID: 1510102245}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5034,6 +5035,18 @@ MonoBehaviour:
   _satan: {fileID: 8300000, guid: 1134f6d280fbd45baa460d11f5b344cf, type: 3}
   _noSatan: {fileID: 8300000, guid: 84af90300bf844e4598e3f88e78ff4d6, type: 3}
   DemonicDecorations: {fileID: 1301080132}
+--- !u!114 &1510102245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510102237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 4d8fbea221c24a6468ab43ebfc9973d2, type: 2}
 --- !u!1 &1521258705
 GameObject:
   m_ObjectHideFlags: 0
