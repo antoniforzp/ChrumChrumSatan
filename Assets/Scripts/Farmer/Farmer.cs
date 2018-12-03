@@ -7,7 +7,15 @@ using TMPro;
 
 public class Farmer : MonoBehaviour {
 
-    public WinScreenData wns;
+    public GameObject Control1;
+    public GameObject Control2;
+    public GameObject WinScreen;
+    public TextMeshProUGUI WinScreenText;
+
+    public enum WindowState { Control1, Control2, Game, WinScreen};
+    public WindowState CurrState = WindowState.Control1;
+
+    
     public TextMeshProUGUI Timer;
     public float TimerValue = 120f;
     //public int CultistsCounter = 2;
@@ -25,7 +33,7 @@ public class Farmer : MonoBehaviour {
             if (!source.isPlaying) source.PlayOneShot(source.clip);
             _isHunting = true;
             _currentTarget = target;
-            _agent.speed = 6f;
+            _agent.speed = 9f;
             //_agent.speed = 0;
             _agent.SetDestination(_currentTarget);
             Animator.enabled = true;
@@ -48,7 +56,6 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
-        wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         source = gameObject.GetComponent<AudioSource>();
         source.clip = clip;
@@ -64,59 +71,114 @@ public class Farmer : MonoBehaviour {
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_currentTarget);
         //_agent.speed = 0;
-        _agent.speed = 2f;
+        _agent.speed = 3f;
 
     }
 
     void Update()
     {
-        TimerValue -= Time.deltaTime;
-        Timer.text = Mathf.RoundToInt(TimerValue).ToString();
-        if (TimerValue <= 0)
+        if (CurrState == WindowState.Game)
         {
-            wns.FillData(Cultists[0].Killed, Cultists[1].Killed);
-            SceneManager.LoadScene("menu");
-        }
-        
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("menu");
-        }
-        if (!_isHunting)
-        {
-            if (!IsWaiting)
+            TimerValue -= Time.deltaTime;
+            Timer.text = Mathf.RoundToInt(TimerValue).ToString();
+            if (TimerValue <= 0)
             {
-
-                if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+                CurrState = WindowState.WinScreen;
+                Cultists[0].Blocked = true;
+                Cultists[1].Blocked = true;
+                WinScreen.SetActive(true);
+                if (Cultists[0].Killed > Cultists[1].Killed)
+                    WinScreenText.text = "Left player has won by killing " + Cultists[0].Killed.ToString() + " in the name of Satan!";
+                else if (Cultists[0].Killed < Cultists[1].Killed)
+                    WinScreenText.text = "Right player has won by killing " + Cultists[1].Killed.ToString() + " in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
+                else
                 {
-                    IsWaiting = true;
-                    AnimatorIdle();
+                    if (Cultists[0].Killed == 0 && Cultists[1].Killed == 0)
+                        WinScreenText.text = "There is a draw! Satan is not satisfied with your sacrifice.";
+                    else
+                        WinScreenText.text = "There is a draw! Satan is satisfied with your bloody sacrifice.";
+                }
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("menu");
+            }
+            if (!_isHunting)
+            {
+                if (!IsWaiting)
+                {
+
+                    if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+                    {
+                        IsWaiting = true;
+                        AnimatorIdle();
+                    }
+                }
+                else
+                {
+                    IsWaitingTimer -= Time.deltaTime;
+                    if (IsWaitingTimer <= 0f)
+                    {
+                        IsWaiting = false;
+                        IsWaitingTimer = 1.5f;
+                        _currentTarget = RandomDest();
+                        _agent.SetDestination(_currentTarget);
+                        Animator.enabled = true;
+
+                    }
                 }
             }
             else
             {
-                IsWaitingTimer -= Time.deltaTime;
-                if (IsWaitingTimer <= 0f)
+                if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
                 {
+                    SetIsHunting(false, Vector3.zero);
                     IsWaiting = false;
-                    IsWaitingTimer = 1.5f;
-                    _currentTarget = RandomDest();
-                    _agent.SetDestination(_currentTarget);
-                    Animator.enabled = true;
-                    
                 }
             }
         }
-        else
+    }
+
+    void LateUpdate()
+    {
+        if (CurrState == WindowState.Control1)
         {
-            if (transform.position.x == _currentTarget.x && transform.position.z == _currentTarget.z)
+            if (Input.anyKeyDown)
             {
-                SetIsHunting(false, Vector3.zero);
-                IsWaiting = false;
+                foreach (Animator anim in Cultists[0].ButtonAnimators)
+                    anim.SetBool("Active", true);
+                foreach (Animator anim in Cultists[1].ButtonAnimators)
+                    anim.SetBool("Active", true);
+                CurrState = WindowState.Control2;
+                Control1.SetActive(false);
+                Control2.SetActive(true);
             }
         }
-        
+        else if (CurrState == WindowState.Control2)
+        {
+            if (Input.anyKeyDown)
+            {
+                foreach (Animator anim in Cultists[0].ButtonAnimators)
+                    anim.SetBool("Active", false);
+                foreach (Animator anim in Cultists[1].ButtonAnimators)
+                    anim.SetBool("Active", false);
+                CurrState = WindowState.Game;
+                Control2.SetActive(false);
+                Cultists[0].Blocked = false;
+                Cultists[1].Blocked = false;
+            }
+        }
+        else if (CurrState == WindowState.WinScreen)
+        {
+            if (Input.anyKeyDown)
+            {
+                SceneManager.LoadScene("menu");
+            }
+
+
+        }
     }
 
     Vector3 RandomDest()

@@ -46,7 +46,7 @@ public class View : MonoBehaviour
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
             {
-                farmer._agent.speed = 6f;
+                farmer._agent.speed = 9f;
 
 
             }
@@ -72,7 +72,7 @@ public class View : MonoBehaviour
                 Cultist cultist = col.gameObject.GetComponent<Cultist>();
                 if (cultist.IsBeast)
                 {
-                    farmer._agent.speed = 11f;
+                    farmer._agent.speed = 13f;
                 }
           //  }
             // --
