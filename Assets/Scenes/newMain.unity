@@ -1222,8 +1222,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Press any key to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2442,8 +2443,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2763,10 +2765,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Look up on those shiny boxes! \nHere you will see keys,\nwhich you will
     have to press after\n catching a pig in a beast mode.\n Beware of a nosy farmer,\nwho
-    is not satisfied with the fact, \nthat someone uses ancient spells in his pigsty..."
+    is not satisfied with the fact, \nthat someone uses\nancient spells in his pigsty..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2836,7 +2839,7 @@ MonoBehaviour:
     spaceCount: 48
     wordCount: 45
     linkCount: 0
-    lineCount: 7
+    lineCount: 8
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -3972,8 +3975,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Press any key to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6501,8 +6505,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Press any key to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

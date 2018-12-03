@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &129196897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,8 +319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.321}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.100037, y: -206.50005}
-  m_SizeDelta: {x: 327, y: 109}
+  m_AnchoredPosition: {x: 36.100037, y: -198}
+  m_SizeDelta: {x: 292, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138033363
 MonoBehaviour:
@@ -735,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: -283}
+  m_AnchoredPosition: {x: 33, y: -311}
   m_SizeDelta: {x: 200.4, y: 111.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616831309
@@ -1276,8 +1276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.100037, y: -83.70004}
-  m_SizeDelta: {x: 369.6, y: 121.2}
+  m_AnchoredPosition: {x: 36.100037, y: -63}
+  m_SizeDelta: {x: 293, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852786405
 MonoBehaviour:
@@ -1834,8 +1834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.07700001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29.900034, y: -314.00003}
-  m_SizeDelta: {x: 218, y: 70.5}
+  m_AnchoredPosition: {x: 29.900034, y: -322}
+  m_SizeDelta: {x: 301, y: 143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975170912
 MonoBehaviour:
@@ -2580,7 +2580,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 36, y: 69}
-  m_SizeDelta: {x: 429.5, y: 184.2}
+  m_SizeDelta: {x: 275, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249042828
 MonoBehaviour:
@@ -2795,7 +2795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1302109270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3749,7 +3749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.10003, y: -126.7}
+  m_AnchoredPosition: {x: 32.10003, y: -167}
   m_SizeDelta: {x: 165.6, y: 160.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988181761
@@ -3841,8 +3841,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Sacrifice piglets and watch out for farmer. Win for the glory of Satan!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb29f97baf2d4324bad8ad42bc0eaf35, type: 2}
+  m_sharedMaterial: {fileID: 21806260235940048, guid: bb29f97baf2d4324bad8ad42bc0eaf35,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3912,7 +3913,7 @@ MonoBehaviour:
     spaceCount: 12
     wordCount: 13
     linkCount: 0
-    lineCount: 4
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
