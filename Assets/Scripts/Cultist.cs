@@ -111,6 +111,10 @@ public class Cultist : MonoBehaviour {
 	
 	void Update ()
 	{
+	    if (Input.GetKeyDown(KeyCode.Escape))
+	    {
+	        SceneManager.LoadScene("menu");
+	    }
         if (!IsDying && !IsKilling)
         {
             //trun on off satan mode
