@@ -94,9 +94,9 @@ public class Farmer : MonoBehaviour {
                 else
                 {
                     if (Cultists[0].Killed == 0 && Cultists[1].Killed == 0)
-                        WinScreenText.text = "There is a draw! Satan is not satisfied with your sacrifice.";
+                        WinScreenText.text = "There is a draw!\nSatan is not satisfied with your sacrifice.";
                     else
-                        WinScreenText.text = "There is a draw! Satan is satisfied with your bloody sacrifice.";
+                        WinScreenText.text = "There is a draw!\nSatan is satisfied with your bloody sacrifice.";
                 }
             }
 
