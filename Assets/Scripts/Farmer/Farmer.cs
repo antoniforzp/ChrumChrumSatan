@@ -88,15 +88,15 @@ public class Farmer : MonoBehaviour {
                 Cultists[1].Blocked = true;
                 WinScreen.SetActive(true);
                 if (Cultists[0].Killed > Cultists[1].Killed)
-                    WinScreenText.text = "Left player has won by\nkilling " + Cultists[0].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
+                    WinScreenText.text = "Left player has won by\nkilling " + Cultists[0].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with\nyour bloody sacrifice.";
                 else if (Cultists[0].Killed < Cultists[1].Killed)
-                    WinScreenText.text = "Right player has won\nby killing " + Cultists[1].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
+                    WinScreenText.text = "Right player has won\nby killing " + Cultists[1].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with\nyour bloody sacrifice.";
                 else
                 {
                     if (Cultists[0].Killed == 0 && Cultists[1].Killed == 0)
-                        WinScreenText.text = "There is a draw!\nSatan is not satisfied with your sacrifice.";
+                        WinScreenText.text = "There is a draw!\nSatan is not satisfied with\nyour sacrifice.";
                     else
-                        WinScreenText.text = "There is a draw!\nSatan is satisfied with your bloody sacrifice.";
+                        WinScreenText.text = "There is a draw!\nSatan is satisfied with\nyour bloody sacrifice.";
                 }
             }
 
