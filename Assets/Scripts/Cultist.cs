@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class Cultist : MonoBehaviour {
 
+    public GameObject PigletPrefab;
+    public float respawnTimer = 9f;
     public Sprite[] Markers;
     public int Killed = 0;
     public TextMeshProUGUI Counter;
     public bool IsDying = false;
     public bool IsKilling = false;
+    public bool Died = false;
     public MusicManager Music;
     public int Number = 1;
     public Farmer Farmer;
@@ -21,7 +24,7 @@ public class Cultist : MonoBehaviour {
 	[SerializeField] private bool _isBeast = false;
 	[SerializeField] private float vel;
 	
-	[SerializeField] public TextMeshProUGUI _text;
+	[SerializeField] public List<TextMeshProUGUI> Text = new List<TextMeshProUGUI>();
 	
 	[SerializeField] private AudioClip SatanLaugh;
     [SerializeField] private AudioClip kill;
@@ -62,7 +65,9 @@ public class Cultist : MonoBehaviour {
                 vel = 7;
                 _currKey = 0;
                 Music.SetMusic(true, Number);
-                _text.text = "";
+                Text[0].text = "";
+                Text[1].text = "";
+                Text[2].text = "";
                 Marker.sprite = Markers[1];
                 IcoAnimator.SetBool("Satan", true);
             }
@@ -84,13 +89,16 @@ public class Cultist : MonoBehaviour {
         Farmer = GameObject.Find("Farmer").GetComponent<Farmer>();
         KnifeSource = transform.GetChild(0).GetComponent<AudioSource>();
         Marker = transform.GetChild(1).GetComponent<SpriteRenderer>();
-
+        
         source.clip = SatanLaugh;
         source2.clip = kill;
 
         _rigidbody = GetComponent<Rigidbody>();
         if (Number == 2)
         {
+            Text.Add(GameObject.Find("QTE2").GetComponent<TextMeshProUGUI>());
+            Text.Add(GameObject.Find("QTE2 (1)").GetComponent<TextMeshProUGUI>());
+            Text.Add(GameObject.Find("QTE2 (2)").GetComponent<TextMeshProUGUI>());
             letters = "ghyuiopjklbnm";
             IcoAnimator = GameObject.Find("Ico2").GetComponent<Animator>();
             ButtonAnimators.Add(GameObject.Find("Key1_p2").GetComponent<Animator>());
@@ -98,7 +106,10 @@ public class Cultist : MonoBehaviour {
             ButtonAnimators.Add(GameObject.Find("Key3_p2").GetComponent<Animator>());
         }
         else
-        { 
+        {
+            Text.Add(GameObject.Find("QTE1").GetComponent<TextMeshProUGUI>());
+            Text.Add(GameObject.Find("QTE1 (1)").GetComponent<TextMeshProUGUI>());
+            Text.Add(GameObject.Find("QTE1 (2)").GetComponent<TextMeshProUGUI>());
             ButtonAnimators.Add(GameObject.Find("Key1_p1").GetComponent<Animator>());
             ButtonAnimators.Add(GameObject.Find("Key2_p1").GetComponent<Animator>());
             ButtonAnimators.Add(GameObject.Find("Key3_p1").GetComponent<Animator>());
@@ -111,190 +122,199 @@ public class Cultist : MonoBehaviour {
 	
 	void Update ()
 	{
-	    if (Input.GetKeyDown(KeyCode.Escape))
-	    {
-	        SceneManager.LoadScene("menu");
-	    }
-        if (!IsDying && !IsKilling)
+        if (!Died)
         {
-            //trun on off satan mode
-            if (Number == 1)
+            if (!IsDying && !IsKilling)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                //trun on off satan mode
+                if (Number == 1)
                 {
-                    IsBeast = !IsBeast;
-                    sound_flag = true;
-
-                    if (IsBeast && sound_flag)
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        source.Stop();
-                        source.PlayOneShot(source.clip);
-                        sound_flag = false;
+                        IsBeast = !IsBeast;
+                        sound_flag = true;
+
+                        if (IsBeast && sound_flag)
+                        {
+                            source.Stop();
+                            source.PlayOneShot(source.clip);
+                            sound_flag = false;
+                        }
                     }
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
+                else
                 {
-
-                    IsBeast = !IsBeast;
-
-                    sound_flag = true;
-
-                    if (IsBeast && sound_flag)
+                    if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        source.Stop();
-                        source.PlayOneShot(source.clip);
-                        sound_flag = false;
+
+                        IsBeast = !IsBeast;
+
+                        sound_flag = true;
+
+                        if (IsBeast && sound_flag)
+                        {
+                            source.Stop();
+                            source.PlayOneShot(source.clip);
+                            sound_flag = false;
+                        }
                     }
                 }
-            }
 
 
-            if (Number == 1)
-            {
-                int xDelta = 0, yDelta = 0;
-
-                if (Input.GetKey(KeyCode.W)) yDelta++;
-                if (Input.GetKey(KeyCode.S)) yDelta--;
-                if (Input.GetKey(KeyCode.D)) xDelta++;
-                if (Input.GetKey(KeyCode.A)) xDelta--;
-
-
-                AnimatorIdle();
-
-
-
-                if (yDelta == 1) animator.SetBool("Up", true);
-                else if (yDelta == -1) animator.SetBool("Down", true);
-
-                if (xDelta == 1)
-                    animator.SetBool("Right", true);
-                else if (xDelta == -1) animator.SetBool("Left", true);
-
-                _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
-
-                #region OldCOde
-                /*if (Input.GetKey(KeyCode.W))
+                if (Number == 1)
                 {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
-                    animator.SetBool("Up", true);
+                    int xDelta = 0, yDelta = 0;
+
+                    if (Input.GetKey(KeyCode.W)) yDelta++;
+                    if (Input.GetKey(KeyCode.S)) yDelta--;
+                    if (Input.GetKey(KeyCode.D)) xDelta++;
+                    if (Input.GetKey(KeyCode.A)) xDelta--;
+
+
+                    AnimatorIdle();
+
+
+
+                    if (yDelta == 1) animator.SetBool("Up", true);
+                    else if (yDelta == -1) animator.SetBool("Down", true);
+
+                    if (xDelta == 1)
+                        animator.SetBool("Right", true);
+                    else if (xDelta == -1) animator.SetBool("Left", true);
+
+                    _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
+
+                    #region OldCOde
+                    /*if (Input.GetKey(KeyCode.W))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+                        animator.SetBool("Up", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.W))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+                        animator.SetBool("Up", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+                        animator.SetBool("Down", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.S))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+                        animator.SetBool("Down", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Right", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.D))
+                    {
+                        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Right", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Left", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.A))
+                    {
+                        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Left", false);
+                    }*/
+                    #endregion
                 }
-
-                if (Input.GetKeyUp(KeyCode.W))
+                else
                 {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-                    animator.SetBool("Up", false);
-                }
+                    int xDelta = 0, yDelta = 0;
 
-                if (Input.GetKey(KeyCode.S))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-                    animator.SetBool("Down", true);
-                }
+                    if (Input.GetKey(KeyCode.UpArrow)) yDelta++;
+                    if (Input.GetKey(KeyCode.DownArrow)) yDelta--;
+                    if (Input.GetKey(KeyCode.RightArrow)) xDelta++;
+                    if (Input.GetKey(KeyCode.LeftArrow)) xDelta--;
+                    AnimatorIdle();
+                    if (yDelta == 1) animator.SetBool("Up", true);
+                    else if (yDelta == -1) animator.SetBool("Down", true);
 
-                if (Input.GetKeyUp(KeyCode.S))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-                    animator.SetBool("Down", false);
-                }
+                    if (xDelta == 1)
+                        animator.SetBool("Right", true);
+                    else if (xDelta == -1) animator.SetBool("Left", true);
 
-                if (Input.GetKey(KeyCode.D))
-                {
-                    _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Right", true);
-                }
+                    _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
+                    #region OldCode
+                    /*
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
+                        animator.SetBool("Up", true);
+                    }
 
-                if (Input.GetKeyUp(KeyCode.D))
-                {
-                    _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Right", false);
-                }
+                    if (Input.GetKeyUp(KeyCode.UpArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+                        animator.SetBool("Up", false);
+                    }
 
-                if (Input.GetKey(KeyCode.A))
-                {
-                    _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Left", true);
-                }
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
+                        animator.SetBool("Down", true);
+                    }
 
-                if (Input.GetKeyUp(KeyCode.A))
-                {
-                    _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Left", false);
+                    if (Input.GetKeyUp(KeyCode.DownArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
+                        animator.SetBool("Down", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Right", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.RightArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Right", false);
+                    }
+
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Left", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.LeftArrow))
+                    {
+                        _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
+                        animator.SetBool("Left", false);
+                    }
                 }*/
-                #endregion
+                    #endregion
+                }
+
             }
-            else
+        }
+        else
+        {
+            respawnTimer -= Time.deltaTime;
+            if (Number == 2) Text[2].text = Mathf.RoundToInt(respawnTimer).ToString();
+            else Text[0].text = Mathf.RoundToInt(respawnTimer).ToString();
+            if (respawnTimer <= 0)
             {
-                int xDelta = 0, yDelta = 0;
-
-                if (Input.GetKey(KeyCode.UpArrow)) yDelta++;
-                if (Input.GetKey(KeyCode.DownArrow)) yDelta--;
-                if (Input.GetKey(KeyCode.RightArrow)) xDelta++;
-                if (Input.GetKey(KeyCode.LeftArrow)) xDelta--;
-                AnimatorIdle();
-                if (yDelta == 1) animator.SetBool("Up", true);
-                else if (yDelta == -1) animator.SetBool("Down", true);
-
-                if (xDelta == 1)
-                    animator.SetBool("Right", true);
-                else if (xDelta == -1) animator.SetBool("Left", true);
-
-                _rigidbody.velocity = new Vector3(xDelta, 0, yDelta).normalized * vel;
-                #region OldCode
-                /*
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, vel);
-                    animator.SetBool("Up", true);
-                }
-
-                if (Input.GetKeyUp(KeyCode.UpArrow))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-                    animator.SetBool("Up", false);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, -vel);
-                    animator.SetBool("Down", true);
-                }
-
-                if (Input.GetKeyUp(KeyCode.DownArrow))
-                {
-                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
-                    animator.SetBool("Down", false);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    _rigidbody.velocity = new Vector3(vel, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Right", true);
-                }
-
-                if (Input.GetKeyUp(KeyCode.RightArrow))
-                {
-                    _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Right", false);
-                }
-
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    _rigidbody.velocity = new Vector3(-vel, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Left", true);
-                }
-
-                if (Input.GetKeyUp(KeyCode.LeftArrow))
-                {
-                    _rigidbody.velocity = new Vector3(0, 0, _rigidbody.velocity.z);
-                    animator.SetBool("Left", false);
-                }
-            }*/
-                #endregion
+                Respawn();
             }
-
         }
         if (IsBeast)
         {
@@ -304,7 +324,9 @@ public class Cultist : MonoBehaviour {
                 {
                     if (_currKey == 2)
                     {
+                        Instantiate(PigletPrefab, new Vector3(3.09f,_touchedPiglet.transform.position.y, 12.06f),_touchedPiglet.transform.rotation, GameObject.Find("Piglets").transform);
                         _touchedPiglet.gameObject.SetActive(false);
+                        
                         source2.PlayOneShot(source2.clip);
                         Killed++;
                         Farmer.SetIsHunting(true, transform.position);
@@ -313,7 +335,9 @@ public class Cultist : MonoBehaviour {
                         ButtonAnimators[_currKey].SetBool("Active", false);
                         animator.SetBool("Kill", true);
                         StartCoroutine(Cooldown());
-                        _text.text = "";
+                        Text[0].text = "";
+                        Text[1].text = "";
+                        Text[2].text = "";
                         _currKey = 0;
                     }
                     else
@@ -355,9 +379,12 @@ public class Cultist : MonoBehaviour {
 		for (int i = 0; i < 3;i++)
 		{
 			string key = Rand();
-			_text.text += " " + key.ToUpper();
-			_keys[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), key.ToUpper());
+            
+            _keys[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), key.ToUpper());
 		}
+        Text[0].text = _keys[0].ToString();
+        Text[1].text = _keys[1].ToString();
+        Text[2].text = _keys[2].ToString();
         ButtonAnimators[0].SetBool("Active", true);
     }
 
@@ -378,13 +405,8 @@ public class Cultist : MonoBehaviour {
         IsKilling = false;
         IsBeast = false;
         _rigidbody.drag = 0f;
-        Farmer.PigCounter--;
-        if (Farmer.PigCounter == 0)
-        {
-            //WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
-            //wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("menu");
-        }
+        
+        
     }
 
     public IEnumerator PlayDeathAnimation()
@@ -392,14 +414,40 @@ public class Cultist : MonoBehaviour {
         //SET DEATH BOOL
         yield return new WaitForSeconds(1f);
         IcoAnimator.SetBool("Die", true);
-        Farmer.CultistsCounter--;
-        if (Farmer.CultistsCounter == 0)
-        {
+        //Farmer.CultistsCounter--;
+        //if (Farmer.CultistsCounter == 0)
+        //{
             //WinScreenData wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
             //wns.FillData(Farmer.Cultists[0].Killed, Farmer.Cultists[1].Killed);
-            SceneManager.LoadScene("menu");
-        }
-        gameObject.SetActive(false);
+            
+        //}
+        Died = true;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        Marker.sprite = null;
+        if (Number == 2) Text[2].text = Mathf.RoundToInt(respawnTimer).ToString();
+        else Text[0].text = Mathf.RoundToInt(respawnTimer).ToString();
+    }
+
+
+    void Respawn()
+    {
+        if (Number == 1) transform.position = new Vector3(-3.51f, transform.position.y, 1);
+        else transform.position = new Vector3(1.06f, transform.position.y, -2.67f);
+        Died = false;
+        IsDying = false;
+        IsKilling = false;
+        AnimatorIdle();
+        Marker.sprite = Markers[0];
+        GetComponent<Collider>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
+        respawnTimer = 9f;
+        IcoAnimator.SetBool("Die", false);
+        Text[0].text = "";
+        Text[1].text = "";
+        Text[2].text = "";
+        _rigidbody.drag = 0;
+        
     }
 
     void AnimatorIdle()

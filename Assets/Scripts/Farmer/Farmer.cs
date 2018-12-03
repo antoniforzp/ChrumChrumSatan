@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Farmer : MonoBehaviour {
 
-    public int PigCounter = 19;
-    public int CultistsCounter = 2;
+    public TextMeshProUGUI Timer;
+    public float TimerValue = 120f;
+    //public int CultistsCounter = 2;
     List<Vector3> _patrolPositions;
     public List<Cultist> Cultists = new List<Cultist>();
     public Vector3 _currentTarget;
@@ -44,6 +47,7 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
+        Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         source = gameObject.GetComponent<AudioSource>();
         source.clip = clip;
         _patrolPositions = new List<Vector3>();
@@ -64,7 +68,18 @@ public class Farmer : MonoBehaviour {
 
     void Update()
     {
+        TimerValue -= Time.deltaTime;
+        Timer.text = Mathf.RoundToInt(TimerValue).ToString();
+        if (TimerValue <= 0)
+        {
+            SceneManager.LoadScene("menu");
+        }
 
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
         if (!_isHunting)
         {
             if (!IsWaiting)
@@ -127,14 +142,16 @@ public class Farmer : MonoBehaviour {
                     cultist.IsDying = true;
                     cultist._rigidbody.velocity = Vector3.zero;
                     cultist.IsBeast = false;
-                    cultist.Marker.sprite = null;
+                    //cultist.Marker.sprite = null;
                     if (cultist.IsKilling)
                     {
                         Piglet piglet = cultist._touchedPiglet;
                         piglet.Rb.velocity =
                         new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * piglet._vel;
                         piglet.Rb.drag = 0;
-                        cultist._text.text = "";
+                        foreach (TextMeshProUGUI txt in cultist.Text)
+                            txt.text = "";
+                    
                         foreach (Animator animator in cultist.ButtonAnimators)
                             animator.SetBool("Active", false);
                     }
