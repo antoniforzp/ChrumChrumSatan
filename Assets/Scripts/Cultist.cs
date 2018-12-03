@@ -332,7 +332,6 @@ public class Cultist : MonoBehaviour {
 
                             source2.PlayOneShot(source2.clip);
                             Killed++;
-                            Farmer.SetIsHunting(true, transform.position);
                             Counter.text = Killed.ToString();
                             AnimatorIdle();
                             ButtonAnimators[_currKey].SetBool("Active", false);
@@ -378,6 +377,9 @@ public class Cultist : MonoBehaviour {
 
 	void purge()
 	{
+        source2.PlayOneShot(source2.clip);
+
+        Farmer.SetIsHunting(true, transform.position);
         IsKilling = true;
 		for (int i = 0; i < 3;i++)
 		{

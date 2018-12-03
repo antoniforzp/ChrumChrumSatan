@@ -88,9 +88,9 @@ public class Farmer : MonoBehaviour {
                 Cultists[1].Blocked = true;
                 WinScreen.SetActive(true);
                 if (Cultists[0].Killed > Cultists[1].Killed)
-                    WinScreenText.text = "Left player has won by killing " + Cultists[0].Killed.ToString() + " in the name of Satan!";
+                    WinScreenText.text = "Left player has won by\nkilling " + Cultists[0].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
                 else if (Cultists[0].Killed < Cultists[1].Killed)
-                    WinScreenText.text = "Right player has won by killing " + Cultists[1].Killed.ToString() + " in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
+                    WinScreenText.text = "Right player has won\nby killing " + Cultists[1].Killed.ToString() + " pig(s) in the name of Satan!\nSatan is satisfied with your bloody sacrifice.";
                 else
                 {
                     if (Cultists[0].Killed == 0 && Cultists[1].Killed == 0)

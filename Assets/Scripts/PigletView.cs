@@ -8,6 +8,7 @@ public class PigletView : MonoBehaviour
     Farmer farmer;
     private AudioSource source;
     [SerializeField] private AudioClip clip;
+    public bool TriggerEntered = false;
 
     void Awake()
     {
@@ -23,11 +24,31 @@ public class PigletView : MonoBehaviour
         
         if (col.gameObject.tag == "cultist")
         {
+            TriggerEntered = true;
             Cultist cultist = col.gameObject.GetComponent<Cultist>();
             if (cultist.IsBeast)
             {
 
-                Debug.Log("enterIsBeast!");
+                
+                source.PlayOneShot(source.clip);
+
+                farmer.SetIsHunting(true, cultist.transform.position);
+            }
+            
+        }
+    }
+
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "cultist")
+        {
+            Cultist cultist = col.gameObject.GetComponent<Cultist>();
+            if (cultist.IsBeast && TriggerEntered)
+            {
+               
+                TriggerEntered = false;
+                Debug.Log("SIGNAL!");
                 source.PlayOneShot(source.clip);
 
                 farmer.SetIsHunting(true, cultist.transform.position);
@@ -35,20 +56,11 @@ public class PigletView : MonoBehaviour
         }
     }
 
-
-    /*private void OnTriggerStay(Collider col)
+    private void OnTriggerExit(Collider col)
     {
-        
-        if (col.gameObject.tag == "cultist")
-        {
-            Cultist cultist = col.gameObject.GetComponent<Cultist>();
-            if (cultist.IsBeast)
-            {
-                Debug.Log("stayIsBeats!");
-                piglet._vel = 10f;
-            }
-        }
-    }*/
+        TriggerEntered = false;
+
+    }
 
     /*private void OnTriggerExit(Collider col)
     {
