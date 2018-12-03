@@ -7,6 +7,7 @@ using TMPro;
 
 public class Farmer : MonoBehaviour {
 
+    public WinScreenData wns;
     public TextMeshProUGUI Timer;
     public float TimerValue = 120f;
     //public int CultistsCounter = 2;
@@ -47,6 +48,7 @@ public class Farmer : MonoBehaviour {
 
     void Start()
     {
+        wns = GameObject.Find("Win Screen Data").GetComponent<WinScreenData>();
         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         source = gameObject.GetComponent<AudioSource>();
         source.clip = clip;
@@ -72,9 +74,10 @@ public class Farmer : MonoBehaviour {
         Timer.text = Mathf.RoundToInt(TimerValue).ToString();
         if (TimerValue <= 0)
         {
+            wns.FillData(Cultists[0].Killed, Cultists[1].Killed);
             SceneManager.LoadScene("menu");
         }
-
+        
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

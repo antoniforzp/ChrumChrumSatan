@@ -76,7 +76,7 @@ public class Cultist : MonoBehaviour {
                 vel = 5;
                 gameObject.GetComponent<SpriteRenderer>().sprite = piglet;
                 Music.SetMusic(false, Number);
-                Marker.sprite = Markers[0];
+                if (!IsDying) Marker.sprite = Markers[0];
                 IcoAnimator.SetBool("Satan", false);
             }
 		}
@@ -412,6 +412,8 @@ public class Cultist : MonoBehaviour {
     public IEnumerator PlayDeathAnimation()
     {
         //SET DEATH BOOL
+        foreach (Animator butt in ButtonAnimators)
+            butt.SetBool("Active", false);
         yield return new WaitForSeconds(1f);
         IcoAnimator.SetBool("Die", true);
         //Farmer.CultistsCounter--;
